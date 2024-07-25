@@ -1,0 +1,128 @@
+import prisma from "../utils/prisma";
+import * as bcrypt from "../utils/bcrypt";
+import { UserRequestDto, UserSchema } from "../validators/userSchema";
+import HttpException from "../utils/http-error";
+import { HttpStatus } from "../utils/http-status";
+import { ErrorResponse } from "../utils/types";
+
+interface UserData {
+  id: string;
+  first_name: string;
+  last_name: string;
+  phoneNumber: string;
+  email: string;
+  password: string;
+  createdAt?: Date;
+  updatedAt?: Date;
+ 
+}
+
+
+export const createUser = async (userData: UserRequestDto) => {
+  const validateUser = UserSchema.safeParse(userData);
+  if (validateUser.success) {
+    const {
+      first_name,
+      last_name,
+      email,
+      password,
+      phoneNumber,
+     
+    } = userData;
+
+    // checking if user exists
+    const findUser = await prisma.user.findUnique({ where: { email } });
+    if (findUser) {
+      throw new HttpException(HttpStatus.BAD_REQUEST, "User Already exist");
+    }
+
+    try {
+      const hashedpsswd = await bcrypt.hash(userData.password);
+      if (!hashedpsswd) {
+        throw new HttpException(
+          HttpStatus.INTERNAL_SERVER_ERROR,
+          "Password hashing failed"
+        );
+      }
+
+      const newUser = await prisma.user.create({
+        data: {
+          ...userData,
+          password: hashedpsswd,
+         
+        },
+      });
+
+      return newUser as UserData;
+    } catch (error) {
+      const err = error as ErrorResponse;
+      throw new HttpException(
+        err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+        err.message
+      );
+    }
+  } else {
+    const errors = validateUser.error.issues.map(
+      ({ message, path }) => `${path}: ${message}`
+    );
+    throw new HttpException(HttpStatus.BAD_REQUEST, errors.join(". "));
+  }
+};
+
+export const getUserByEmail = async (email: string) => {
+  try {
+    const user = await prisma.user.findUnique({ where: { email } });
+    return user as UserData | null;
+  } catch (error) {
+    console.error("Error fetching user by email", error);
+    throw error;
+  }
+};
+
+export const getAllUsers = async () => {
+  try {
+    const users = await prisma.user.findMany();
+    return users as UserData[];
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(err.status || HttpStatus.BAD_REQUEST, err.message);
+  }
+};
+
+export const updateUser = async (
+  userId: string,
+  userData: Partial<UserData>
+) => {
+  try {
+    const updateUser = await prisma.user.update({
+      where: { id: userId },
+      data: { ...userData },
+    });
+    return updateUser as UserData;
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(
+      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      err.message || "Failed to update user"
+    );
+  }
+};
+
+export const deleteUser = async (userId: string) => {
+  try {
+    await prisma.user.delete({ where: { id: userId } });
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(err.status || HttpStatus.BAD_REQUEST, err.message);
+  }
+};
+
+export const getUserById = async (id: string) => {
+  try {
+    const user = await prisma.user.findUnique({ where: { id } });
+    return user as UserData | null;
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(err.status || HttpStatus.BAD_REQUEST, err.message);
+  }
+};
