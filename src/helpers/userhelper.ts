@@ -12,28 +12,18 @@ import {
 
 interface UserData {
   id: string;
-  first_name: string;
-  last_name: string;
-  phoneNumber: string;
+  fullName: string;
   email: string;
   password: string;
+  company : string;
   createdAt?: Date;
   updatedAt?: Date;
- 
 }
-
 
 export const createUser = async (userData: UserRequestDto) => {
   const validateUser = UserSchema.safeParse(userData);
   if (validateUser.success) {
-    const {
-      first_name,
-      last_name,
-      email,
-      password,
-      phoneNumber,
-     
-    } = userData;
+    const { fullName, email, password, company } = userData;
 
     // checking if user exists
     const findUser = await prisma.user.findUnique({ where: { email } });
@@ -54,7 +44,6 @@ export const createUser = async (userData: UserRequestDto) => {
         data: {
           ...userData,
           password: hashedpsswd,
-         
         },
       });
 
