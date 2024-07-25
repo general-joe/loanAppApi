@@ -1,0 +1,23 @@
+[
+  {
+    "modelName": "client",
+    "fields": ["provider"]
+  },
+  {
+    "modelName": "db",
+    "fields": ["provider", "url"]
+  },
+  {
+    "modelName": "user",
+    "fields": [
+      "id",
+      "fullName",
+      "email",
+      "password",
+      "company",
+      "createdAt",
+      "updatedAt",
+      "del_flg"
+    ]
+  }
+]

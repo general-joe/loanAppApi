@@ -12,21 +12,12 @@ import cloudinary from "../utils/cloudinary";
 
 interface UserData {
   id: string;
-  first_name: string;
-  last_name: string;
-  phoneNumber: string;
+  fullName: string;
   email: string;
   password: string;
-
+  company: string;
   createdAt?: Date;
   updatedAt?: Date;
-}
-
-enum Status {
-  ACTIVE = "ACTIVE",
-  BLOCKED = "BLOCKED",
-  INACTIVE = "INACTIVE",
-  REMOVED = "REMOVED",
 }
 
 export const signUp = async (
