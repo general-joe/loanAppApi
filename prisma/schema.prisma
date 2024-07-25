@@ -19,7 +19,7 @@ model user {
   email     String   @unique
   password  String
   company   String?
-  del_flg   Boolean  @default(false)
+  del_flag  Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
