@@ -5,20 +5,6 @@ import HttpException
  from "../utils/http-error"
  import { ErrorResponse } from "../utils/types"
 
-export const getSecretKey = async(req: Request, res: Response, next: NextFunction)=>{
-    try{
-        const secret = speakeasy.generateSecret({
-            length: 25
-        })
-        res.status(HttpStatus.OK).json({secret: secret.base32})
-    }catch(error){
-        const err = error as ErrorResponse;
-      throw new HttpException(
-        err.status || HttpStatus.INTERNAL_SERVER_ERROR,
-        err.message
-      )
-    }
-}
 
 export const getToken = async (req: Request, res: Response, next: NextFunction)=>{
     try{
