@@ -1,17 +1,15 @@
 import { Router } from "express";
 import {
-    getSecretKey,
-    getToken,
-    verifyToken
+    generateOtp,
+    verifyOtp,
+  
 
 } from "../controllers/authentication.controller"
 
 const authRouter = Router();
 
-authRouter.post("/secret-key", getSecretKey);
+authRouter.post("/auth-login", generateOtp);
 
-authRouter.post("/token", getToken);
-
-authRouter.post("/verify-token", verifyToken);
+authRouter.post("/verify", verifyOtp);
 
 export default authRouter;

@@ -1,4 +1,5 @@
 import {Router} from "express"
+import { generateOtp } from "../controllers/authentication.controller";
 import {
   signUp,
   logIn,
@@ -6,6 +7,7 @@ import {
   getUserById,
   updateUser,
   deleteUser,
+
   logout,
   getUserProfile,
 } from "../controllers/user";
@@ -20,7 +22,7 @@ const userRouter = Router()
 
 
 userRouter.post("/signup",  signUp);
-userRouter.post("/login",  logIn);
+userRouter.post("/login", logIn, generateOtp);
 userRouter.post("/logout", logout);
 userRouter.get("/", getUsers);
 userRouter.get("/profile", getUserProfile);
