@@ -67,27 +67,37 @@ interface ExtractedModel {
   fields: string[];
 }
 const extractModels = (data: Declarations): ExtractedModel[] => {
+  writeFileSync("./generatedSchema.json", JSON.stringify(data, null, 2));
   return data.declarations.map((model) => {
-    const modelName = model.name.value;
-    const fields = model.members
-      .filter((member) => {
-        if (member.type && member.type.kind && member.type.kind === "list") {
-          return false;
-        }
-        if (
-          member.attributes &&
-          member.attributes.some((attr) => attr.path.value.includes("relation"))
-        ) {
-          return false;
-        }
-        // if (member.attributes && member.attributes.length > 0) return false;
-        return true;
-      })
-      .map((member) => member.name.value);
-    return {
-      modelName,
-      fields,
-    };
+    if (model.name) {
+      const modelName = model.name.value;
+      const fields = model.members
+        .filter((member) => {
+          if (member.type && member.type.kind && member.type.kind === "list") {
+            return false;
+          }
+          if (
+            member.attributes &&
+            member.attributes.some((attr) =>
+              attr.path.value.includes("relation")
+            )
+          ) {
+            return false;
+          }
+          // if (member.attributes && member.attributes.length > 0) return false;
+          return true;
+        })
+        .map((member) => member.name.value);
+      return {
+        modelName,
+        fields,
+      };
+    } else {
+      return {
+        modelName: "",
+        fields: [],
+      };
+    }
   });
 };
 

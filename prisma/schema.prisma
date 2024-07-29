@@ -25,7 +25,7 @@ model user {
 }
 
 model person {
-  id                  String   @id @default(uuid())
+  id                  String          @id @default(uuid())
   fullname            String
   dob                 DateTime
   maritalStatus       marital
@@ -38,6 +38,16 @@ model person {
   nationalID          String
   passportPictureUrl  String
   passportPictureKey  String
+  employments         employment[]
+  guarantors          guarantor[]
+  banks               bank[]
+  financials          financial[]
+  expenses            expenses[]
+  currentDebts        currentDebt[]
+  creditHistories     creditHistory[]
+  publicRecords       publicRecords[]
+  loans               loan[]
+  documents           documents[]
 }
 
 model employment {
@@ -48,14 +58,18 @@ model employment {
   duration                  Int
   type                      employmentType
   previousEmploymentDetails String
+  person                    person?        @relation(fields: [personId], references: [id])
+  personId                  String?
 }
 
 model guarantor {
-  id           String @id @default(uuid())
+  id           String  @id @default(uuid())
   fullname     String
   address      String
   telephone    String
   relationship String
+  person       person? @relation(fields: [personId], references: [id])
+  personId     String?
 }
 
 model bank {
@@ -66,18 +80,24 @@ model bank {
   branchName    String
   type          accountType
   balance       Float
+  person        person?     @relation(fields: [personId], references: [id])
+  personId      String?
 }
 
 model financial {
-  id     String     @id @default(uuid())
-  type   incomeType
-  amount Float
+  id       String     @id @default(uuid())
+  type     incomeType
+  amount   Float
+  person   person?    @relation(fields: [personId], references: [id])
+  personId String?
 }
 
 model expenses {
-  id     String      @id @default(uuid())
-  type   expenseType
-  amount Float
+  id       String      @id @default(uuid())
+  type     expenseType
+  amount   Float
+  person   person?     @relation(fields: [personId], references: [id])
+  personId String?
 }
 
 model currentDebt {
@@ -86,13 +106,17 @@ model currentDebt {
   existingLoanType          loanType
   outstandingBalance        Float
   monthlyPaymentObligations Float
+  person                    person?  @relation(fields: [personId], references: [id])
+  personId                  String?
 }
 
 model creditHistory {
-  id                     String @id @default(uuid())
+  id                     String  @id @default(uuid())
   detailsOfPreviousLoans String
   repaymentHistory       String
   latePayments           String
+  person                 person? @relation(fields: [personId], references: [id])
+  personId               String?
 }
 
 model publicRecords {
@@ -100,6 +124,8 @@ model publicRecords {
   bankruptcies   Boolean
   criminalRecord Boolean
   nationality    String
+  person         person? @relation(fields: [personId], references: [id])
+  personId       String?
 }
 
 model loan {
@@ -109,6 +135,8 @@ model loan {
   purpose             String
   loanTerm            Int //in months
   collateral          String
+  person              person?  @relation(fields: [personId], references: [id])
+  personId            String?
 }
 
 model documents {
@@ -116,6 +144,8 @@ model documents {
   type        documentType
   documentUrl String
   documentKey String
+  person      person?      @relation(fields: [personId], references: [id])
+  personId    String?
 }
 
 enum documentType {

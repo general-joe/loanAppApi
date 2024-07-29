@@ -1,0 +1,233 @@
+[
+  {
+    "modelName": "",
+    "fields": []
+  },
+  {
+    "modelName": "client",
+    "fields": [
+      "provider"
+    ]
+  },
+  {
+    "modelName": "db",
+    "fields": [
+      "provider",
+      "url"
+    ]
+  },
+  {
+    "modelName": "user",
+    "fields": [
+      "id",
+      "fullName",
+      "email",
+      "password",
+      "company",
+      "del_flag",
+      "createdAt",
+      "updatedAt"
+    ]
+  },
+  {
+    "modelName": "person",
+    "fields": [
+      "id",
+      "fullname",
+      "dob",
+      "maritalStatus",
+      "noOfDependants",
+      "previousHomeAddress",
+      "currentHomeAddress",
+      "email",
+      "telephone",
+      "previousPhone",
+      "nationalID",
+      "passportPictureUrl",
+      "passportPictureKey"
+    ]
+  },
+  {
+    "modelName": "employment",
+    "fields": [
+      "id",
+      "currentEmployerName",
+      "currentEmployerAddress",
+      "position",
+      "duration",
+      "type",
+      "previousEmploymentDetails",
+      "personId"
+    ]
+  },
+  {
+    "modelName": "guarantor",
+    "fields": [
+      "id",
+      "fullname",
+      "address",
+      "telephone",
+      "relationship",
+      "personId"
+    ]
+  },
+  {
+    "modelName": "bank",
+    "fields": [
+      "id",
+      "accountNumber",
+      "accountName",
+      "bankName",
+      "branchName",
+      "type",
+      "balance",
+      "personId"
+    ]
+  },
+  {
+    "modelName": "financial",
+    "fields": [
+      "id",
+      "type",
+      "amount",
+      "personId"
+    ]
+  },
+  {
+    "modelName": "expenses",
+    "fields": [
+      "id",
+      "type",
+      "amount",
+      "personId"
+    ]
+  },
+  {
+    "modelName": "currentDebt",
+    "fields": [
+      "id",
+      "loanAmount",
+      "existingLoanType",
+      "outstandingBalance",
+      "monthlyPaymentObligations",
+      "personId"
+    ]
+  },
+  {
+    "modelName": "creditHistory",
+    "fields": [
+      "id",
+      "detailsOfPreviousLoans",
+      "repaymentHistory",
+      "latePayments",
+      "personId"
+    ]
+  },
+  {
+    "modelName": "publicRecords",
+    "fields": [
+      "id",
+      "bankruptcies",
+      "criminalRecord",
+      "nationality",
+      "personId"
+    ]
+  },
+  {
+    "modelName": "loan",
+    "fields": [
+      "id",
+      "loanAmountRequested",
+      "type",
+      "purpose",
+      "loanTerm",
+      "collateral",
+      "personId"
+    ]
+  },
+  {
+    "modelName": "documents",
+    "fields": [
+      "id",
+      "type",
+      "documentUrl",
+      "documentKey",
+      "personId"
+    ]
+  },
+  {
+    "modelName": "documentType",
+    "fields": [
+      "PASSPORT",
+      "NATIONALID",
+      "DRIVERLICENSE",
+      "UTITLITYBILL",
+      "LEASEAGREEMENT",
+      "TAXRETURNS",
+      "BANKSTATMENT",
+      "CREDITREPORT",
+      "RECENTPAYSTUBS"
+    ]
+  },
+  {
+    "modelName": "loanType",
+    "fields": [
+      "PERSONAL",
+      "AUTO",
+      "MORTGAGE",
+      "STUDENT",
+      "COOPERATE",
+      "BUSINESS"
+    ]
+  },
+  {
+    "modelName": "accountType",
+    "fields": [
+      "SAVINGS",
+      "CURRENT",
+      "COOPERATE",
+      "SUSU",
+      "FIXEDDEPOSIT",
+      "TBILL",
+      "BONDS"
+    ]
+  },
+  {
+    "modelName": "expenseType",
+    "fields": [
+      "UTILITIES",
+      "GROCERIES",
+      "TRANSPORTATION",
+      "INSURANCES",
+      "OTHERS"
+    ]
+  },
+  {
+    "modelName": "incomeType",
+    "fields": [
+      "WAGES",
+      "SALARY",
+      "BONUSES",
+      "OTHERS"
+    ]
+  },
+  {
+    "modelName": "employmentType",
+    "fields": [
+      "FULLTIME",
+      "PARTTIME",
+      "CONTRACT",
+      "SELFEMPLOYED"
+    ]
+  },
+  {
+    "modelName": "marital",
+    "fields": [
+      "SINGLE",
+      "MARRIED",
+      "WIDOWED",
+      "SEPARATED",
+      "DIVORCED"
+    ]
+  }
+]
