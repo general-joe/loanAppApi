@@ -23,3 +23,158 @@ model user {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model person {
+  id                  String   @id @default(uuid())
+  fullname            String
+  dob                 DateTime
+  maritalStatus       marital
+  noOfDependants      Int
+  previousHomeAddress String?
+  currentHomeAddress  String
+  email               String?
+  telephone           String
+  previousPhone       String?
+  nationalID          String
+  passportPictureUrl  String
+  passportPictureKey  String
+}
+
+model employment {
+  id                        String         @id @default(uuid())
+  currentEmployerName       String
+  currentEmployerAddress    String
+  position                  String
+  duration                  Int
+  type                      employmentType
+  previousEmploymentDetails String
+}
+
+model guarantor {
+  id           String @id @default(uuid())
+  fullname     String
+  address      String
+  telephone    String
+  relationship String
+}
+
+model bank {
+  id            String      @id @default(uuid())
+  accountNumber String
+  accountName   String
+  bankName      String
+  branchName    String
+  type          accountType
+  balance       Float
+}
+
+model financial {
+  id     String     @id @default(uuid())
+  type   incomeType
+  amount Float
+}
+
+model expenses {
+  id     String      @id @default(uuid())
+  type   expenseType
+  amount Float
+}
+
+model currentDebt {
+  id                        String   @id @default(uuid())
+  loanAmount                Float
+  existingLoanType          loanType
+  outstandingBalance        Float
+  monthlyPaymentObligations Float
+}
+
+model creditHistory {
+  id                     String @id @default(uuid())
+  detailsOfPreviousLoans String
+  repaymentHistory       String
+  latePayments           String
+}
+
+model publicRecords {
+  id             String  @id @default(uuid())
+  bankruptcies   Boolean
+  criminalRecord Boolean
+  nationality    String
+}
+
+model loan {
+  id                  String   @id @default(uuid())
+  loanAmountRequested Float
+  type                loanType
+  purpose             String
+  loanTerm            Int //in months
+  collateral          String
+}
+
+model documents {
+  id          String       @id @default(uuid())
+  type        documentType
+  documentUrl String
+  documentKey String
+}
+
+enum documentType {
+  PASSPORT
+  NATIONALID
+  DRIVERLICENSE
+  UTITLITYBILL
+  LEASEAGREEMENT
+  TAXRETURNS
+  BANKSTATMENT
+  CREDITREPORT
+  RECENTPAYSTUBS
+}
+
+enum loanType {
+  PERSONAL
+  AUTO
+  MORTGAGE
+  STUDENT
+  COOPERATE
+  BUSINESS
+}
+
+enum accountType {
+  SAVINGS
+  CURRENT
+  COOPERATE
+  SUSU
+  FIXEDDEPOSIT
+  TBILL
+  BONDS
+}
+
+enum expenseType {
+  UTILITIES
+  GROCERIES
+  TRANSPORTATION
+  INSURANCES
+  OTHERS
+}
+
+enum incomeType {
+  WAGES
+  SALARY
+  BONUSES
+  OTHERS
+}
+
+enum employmentType {
+  FULLTIME
+  PARTTIME
+  CONTRACT
+  SELFEMPLOYED
+}
+
+enum marital {
+  SINGLE
+  MARRIED
+  WIDOWED
+  SEPARATED
+  DIVORCED
+}
