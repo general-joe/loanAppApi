@@ -10,6 +10,7 @@ import { ErrorResponse } from "../utils/types";
 import { UserPayload, setInvalidToken, signToken } from "../utils/jsonwebtoken";
 import cloudinary from "../utils/cloudinary";
 
+
 interface UserData {
   id: string;
   fullName: string;
@@ -70,9 +71,6 @@ export const logIn = async (
         "Invalid User Credentials"
       );
 
-    const token = signToken({ id: user.id as string });
-    res.header("Authorization", token);
-    res.status(HttpStatus.OK).json({ token });
   } catch (error) {
     const err = error as ErrorResponse;
     next(
