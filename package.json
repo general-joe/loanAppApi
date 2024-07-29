@@ -10,7 +10,8 @@
     "dev": "nodemon src/index.ts",
     "migrate": "npx prisma migrate dev --name init",
     "generate": "npx prisma generate",
-    "extra:fields": "ts-node extractFields.ts"
+    "extra:fields": "ts-node extractFields.ts",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -40,6 +41,7 @@
     "@types/morgan": "^1.9.9",
     "@types/multer": "^1.4.11",
     "@types/node": "^20.14.11",
+    "husky": "^9.1.3",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.3"
