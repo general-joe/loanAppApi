@@ -51,7 +51,7 @@ export const getAllCurrentDebts = async (
   }
 };
 
-export const getCurrentDebt = async (
+export const getSingleCurrentDebt = async (
   req: Request,
   res: Response,
   next: NextFunction

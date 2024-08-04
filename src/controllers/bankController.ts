@@ -11,7 +11,7 @@ import HttpException from "../utils/http-error";
 import { ErrorResponse } from "../utils/types";
 import { BankRequestDto } from "../validators/bankSchema";
 
-export const savePost = async (
+export const saveBank = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -51,7 +51,7 @@ export const getAllBanks = async (
   }
 };
 
-export const getBank = async (
+export const getSingleBank = async (
   req: Request,
   res: Response,
   next: NextFunction
