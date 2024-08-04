@@ -47,7 +47,7 @@ export const getFinancials = async () => {
 
   return financial;
 };
-export const getFinancialtById = async (id: string) => {
+export const getFinancialById = async (id: string) => {
   //get a bank by id and populate
   const financial = await prisma.financial.findUnique({
     where: {
