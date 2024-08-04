@@ -8,7 +8,7 @@ const expenseType = z.enum([
   "OTHERS",
 ]);
 
-const ExpensesSchema = z.object({
+export const ExpensesSchema = z.object({
   type: expenseType,
   amount: z
     .number({ required_error: "Amount is required" })
