@@ -1,5 +1,5 @@
-/*import { RequestHandler, Request, Response, NextFunction } from "express";
-// import allowedFields from "../../allowedFields.json";
+import { RequestHandler, Request, Response, NextFunction } from "express";
+ import allowedFields from "../../allowedFields.json";
 import { HttpStatus } from "../utils/http-status";
 export const validatePayload: (model: string) => RequestHandler =
   (model) => async (req: Request, res: Response, next: NextFunction) => {
@@ -23,4 +23,4 @@ export const validatePayload: (model: string) => RequestHandler =
       next();
     }
   };
-*/
+  

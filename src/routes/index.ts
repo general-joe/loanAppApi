@@ -3,8 +3,17 @@ import authRouter from "./auth.route";
 import userRouter from "./userRoute";
 import documentRouter from "./documentRoute";
 import loanRouter from "./loanRoute";
+import bankRouter from "./bankRoute";
+import currentDebtRoute from "./currentDebtRoute";
+import expensesRoute from "./expensesRoute";
+import financialRoute from "./financialRoute";
 
 const appRouter = Router();
+appRouter.use("/banks", bankRouter);
+appRouter.use("/currentdebts", currentDebtRoute);
+appRouter.use("/expenses", expensesRoute);
+appRouter.use("/financials", financialRoute);
+
 appRouter.use("/authentication", authRouter);
 appRouter.use("/users", userRouter);
 appRouter.use("/documents", documentRouter);
