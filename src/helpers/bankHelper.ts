@@ -6,10 +6,11 @@ import { BankRequestDto, BankSchema } from "../validators/bankSchema";
 export const makeBank = async (data: BankRequestDto) => {
   const validate = BankSchema.safeParse(data);
   if (validate.success) {
-    // The data contains personId
     const { personId } = data;
-    // Check if the person exists
-    const personExists = await prisma.user.findUnique({ where: { id: personId } });
+
+    const personExists = await prisma.user.findUnique({
+      where: { id: personId },
+    });
     if (!personExists) {
       throw new HttpException(
         HttpStatus.NOT_FOUND,
@@ -17,11 +18,8 @@ export const makeBank = async (data: BankRequestDto) => {
       );
     }
 
-    
- 
-    // All checks passed, proceed to create the bank
     return await prisma.bank.create({
-      data:{
+      data: {
         ...data,
       },
     });
@@ -33,27 +31,23 @@ export const makeBank = async (data: BankRequestDto) => {
     throw new HttpException(HttpStatus.BAD_REQUEST, errors.join(". "));
   }
 };
-//This to include person in the bank
+
 export const getBanks = async () => {
-  //get all banks and the associated persons
   const banks = await prisma.bank.findMany({
     include: {
       person: true,
-      
     },
   });
 
   return banks;
 };
 export const getBankById = async (id: string) => {
-  //get a bank by id and populate 
   const bank = await prisma.bank.findUnique({
     where: {
       id,
     },
     include: {
       person: true,
-       
     },
   });
   return bank;
@@ -73,7 +67,6 @@ export const updateBank = async (id: string, data: BankRequestDto) => {
       type: validate.type,
       balance: validate.balance,
       personId: validate.personId,
-    
     },
   });
   return bank;

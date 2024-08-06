@@ -6,9 +6,8 @@ import { PersonRequestDto, PersonSchema } from "../validators/personSchema";
 export const makePerson = async (data: PersonRequestDto) => {
   const validate = PersonSchema.safeParse(data);
   if (validate.success) {
-    // The data contains userId, categoryId, and channelId
     const { nationalID } = data;
-    // Check if the user exists
+
     const personExists = await prisma.user.findUnique({
       where: { id: nationalID },
     });
@@ -29,7 +28,6 @@ export const makePerson = async (data: PersonRequestDto) => {
 };
 
 export const getPersons = async () => {
-  //get all posts and pupute the comments, reactions and channel
   const persons = await prisma.person.findMany({
     include: {
       employments: true,
@@ -48,7 +46,6 @@ export const getPersons = async () => {
   return persons;
 };
 export const getPersonById = async (id: string) => {
-  //get a post by id and populate the comments and reactions
   const person = await prisma.person.findUnique({
     where: {
       id,
