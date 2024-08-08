@@ -1,15 +1,19 @@
 import prisma from "../utils/prisma";
-import { loan } from "@prisma/client";
+import { publicRecords } from "@prisma/client";
 import HttpException from "../utils/http-error";
 import { HttpStatus } from "../utils/http-status";
 import { ErrorResponse } from "../utils/types";
-import { LoanRequestDto, LoanSchema } from "../validators/loanSchema";
+import {
+  PublicRecordsRequestDto,
+  PublicRecordsSchema,
+} from "../validators/publicRecordSchema";
 
-export const requestLoan = async (loanData: LoanRequestDto) => {
+export const createPublicRecord = async (publicRecordData: publicRecords) => {
   try {
-    const validateLoandata = LoanSchema.safeParse(loanData);
-    if (validateLoandata.success) {
-      const { personId } = loanData;
+    const validatePulicRecordData =
+      PublicRecordsSchema.safeParse(publicRecordData);
+    if (validatePulicRecordData.success) {
+      const { personId } = publicRecordData;
 
       // Check if the person exists only if personId is provided
       if (personId) {
@@ -21,10 +25,12 @@ export const requestLoan = async (loanData: LoanRequestDto) => {
         }
       }
 
-      const newLoan = await prisma.loan.create({ data: { ...loanData } });
-      return newLoan as loan;
+      const publicRecord = await prisma.publicRecords.create({
+        data: { ...publicRecordData },
+      });
+      return publicRecord as publicRecords;
     } else {
-      const errors = validateLoandata.error.issues.map(
+      const errors = validatePulicRecordData.error.issues.map(
         ({ message, path }) => `${path}: ${message}`
       );
       throw new HttpException(HttpStatus.BAD_REQUEST, errors.join(". "));
@@ -38,26 +44,12 @@ export const requestLoan = async (loanData: LoanRequestDto) => {
   }
 };
 
-export const getAllLoans = async () => {
+export const getPublicRecords = async () => {
   try {
-    const loans = await prisma.loan.findMany({ include: { person: true } });
-    return loans as loan[];
-  } catch (error) {
-    const err = error as ErrorResponse;
-    throw new HttpException(
-      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
-      err.message
-    );
-  }
-};
-
-export const getLoanById = async (id: string) => {
-  try {
-    const loan = await prisma.loan.findUnique({
-      where: { id },
+    const AllpublicRecords = await prisma.publicRecords.findMany({
       include: { person: true },
     });
-    return loan as loan;
+    return AllpublicRecords as publicRecords[];
   } catch (error) {
     const err = error as ErrorResponse;
     throw new HttpException(
@@ -67,25 +59,45 @@ export const getLoanById = async (id: string) => {
   }
 };
 
-export const deleteLoan = async (id: string) => {
+export const getPublicRecordById = async (id: string) => {
   try {
-    const deletedLoan = await prisma.loan.delete({ where: { id } });
-  } catch (error) {
-    const err = error as ErrorResponse;
-    throw new HttpException(
-      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
-      err.message
-    );
-  }
-};
-
-export const updateLoan = async (id: string, loanData: loan) => {
-  try {
-    const updatedLoan = await prisma.loan.update({
+    const publicRecord = await prisma.publicRecords.findUnique({
       where: { id },
-      data: { ...loanData },
+      include: {
+        person: true,
+      },
     });
-    return updatedLoan as loan;
+    return publicRecord as publicRecords;
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(
+      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      err.message
+    );
+  }
+};
+
+export const updatePublicRecord = async (
+  id: string,
+  publicRecordData: publicRecords
+) => {
+  try {
+    const updateRecord = await prisma.publicRecords.update({
+      where: { id },
+      data: { ...publicRecordData },
+    });
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(
+      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      err.message
+    );
+  }
+};
+
+export const deletePublicRecord = async (id: string) => {
+  try {
+    await prisma.publicRecords.delete({ where: { id } });
   } catch (error) {
     const err = error as ErrorResponse;
     throw new HttpException(
