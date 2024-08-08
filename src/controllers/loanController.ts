@@ -5,15 +5,14 @@ import { ErrorResponse } from "../utils/types";
 import { HttpStatus } from "../utils/http-status";
 import { loan } from "@prisma/client";
 import { LoanRequestDto } from "../validators/loanSchema";
-import prisma from "../utils/prisma";
 export const requestLoan = async (
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
   try {
-    const loanData: loan = req.body satisfies LoanRequestDto;
-    const newLoan = await loanHelper.requestLoan({ ...loanData });
+    const loanData: LoanRequestDto = req.body satisfies LoanRequestDto;
+    const newLoan = await loanHelper.requestLoan({...loanData });
     res.status(HttpStatus.CREATED).json(newLoan);
   } catch (error) {
     const err = error as ErrorResponse;

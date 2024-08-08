@@ -10,6 +10,16 @@ export const createDocument = async (documentData: documents) => {
         const validatedDocument = DocumentSchema.safeParse(documentData);
     
     if (validatedDocument.success) {
+      const { personId } = documentData;
+      if (personId) {
+        const personExists = await prisma.person.findUnique({
+          where: { id: personId },
+        });
+        if (!personExists) {
+          throw new HttpException(HttpStatus.NOT_FOUND, "Person not found.");
+        }
+      }
+
       const newDocumnent=await prisma.documents.create({data:{...documentData}})
         return newDocumnent as documents
     }else {
@@ -29,7 +39,7 @@ export const createDocument = async (documentData: documents) => {
 
 export const getDocuments=async()=>{
     try {
-        const Documents=await prisma.documents.findMany();
+        const Documents=await prisma.documents.findMany({include:{person:true}});
         return Documents as documents[]
     } catch (error) {
         const err = error as ErrorResponse;
@@ -42,7 +52,7 @@ export const getDocuments=async()=>{
 
 export const getDocumentById=async(id:string)=>{
     try {
-        const document=await prisma.documents.findUnique({where:{id}})
+        const document=await prisma.documents.findUnique({where:{id},include:{person:true}})
         return document as documents 
     } catch (error) {
         const err = error as ErrorResponse;
