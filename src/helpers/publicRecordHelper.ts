@@ -31,3 +31,66 @@ export const createPublicRecord = async (publicRecordData: publicRecords) => {
     );
   }
 };
+
+export const getPublicRecords = async () => {
+  try {
+    const AllpublicRecords = await prisma.publicRecords.findMany({
+      include: { person: true },
+    });
+    return AllpublicRecords as publicRecords[];
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(
+      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      err.message
+    );
+  }
+};
+
+export const getPublicRecordById = async (id: string) => {
+  try {
+    const publicRecord = await prisma.publicRecords.findUnique({
+      where: { id },
+      include: {
+        person: true,
+      },
+    });
+    return publicRecord as publicRecords;
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(
+      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      err.message
+    );
+  }
+};
+
+export const updatePublicRecord = async (
+  id: string,
+  publicRecordData: publicRecords
+) => {
+  try {
+    const updateRecord = await prisma.publicRecords.update({
+      where: { id },
+      data: { ...publicRecordData },
+    });
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(
+      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      err.message
+    );
+  }
+};
+
+export const deletePublicRecord = async (id: string) => {
+  try {
+    await prisma.publicRecords.delete({ where: { id } });
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(
+      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      err.message
+    );
+  }
+};
