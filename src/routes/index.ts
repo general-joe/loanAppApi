@@ -9,6 +9,7 @@ import expensesRoute from "./expensesRoute";
 import financialRoute from "./financialRoute";
 import publicRecordRouter from "./publicRecordRoute";
 import creditHistoryRouter from "./creditHistoryRoute";
+import personRoute from "./personRoute";
 
 const appRouter = Router();
 appRouter.use("/banks", bankRouter);
@@ -22,4 +23,5 @@ appRouter.use("/documents", documentRouter);
 appRouter.use("/loan", loanRouter);
 appRouter.use("/credithistory", creditHistoryRouter);
 appRouter.use("/publicrecord", publicRecordRouter);
+appRouter.use("/persons", personRoute);
 export default appRouter;
