@@ -9,10 +9,9 @@ import {
 export const makeExpenses = async (data: ExpensesRequestDto) => {
   const validate = ExpensesSchema.safeParse(data);
   if (validate.success) {
-    // The data contains personId
     const { personId } = data;
-    // Check if the person exists
-    const personExists = await prisma.expenses.findUnique({
+
+    const personExists = await prisma.person.findUnique({
       where: { id: personId },
     });
     if (!personExists) {
@@ -22,7 +21,6 @@ export const makeExpenses = async (data: ExpensesRequestDto) => {
       );
     }
 
-    // All checks passed, proceed to create the bank
     return await prisma.expenses.create({
       data: {
         ...data,
@@ -36,9 +34,8 @@ export const makeExpenses = async (data: ExpensesRequestDto) => {
     throw new HttpException(HttpStatus.BAD_REQUEST, errors.join(". "));
   }
 };
-//This to include person in the bank
+
 export const getExpenses = async () => {
-  //get all banks and the associated persons
   const expenses = await prisma.expenses.findMany({
     include: {
       person: true,
@@ -48,7 +45,6 @@ export const getExpenses = async () => {
   return expenses;
 };
 export const getExpensestById = async (id: string) => {
-  //get a bank by id and populate
   const expenses = await prisma.expenses.findUnique({
     where: {
       id,

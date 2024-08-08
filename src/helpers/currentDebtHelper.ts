@@ -9,10 +9,10 @@ import {
 export const makeCurrentDebt = async (data: CurrentDebtRequestDto) => {
   const validate = CurrentDebtSchema.safeParse(data);
   if (validate.success) {
-    // The data contains personId
+    
     const { personId } = data;
-    // Check if the person exists
-    const personExists = await prisma.currentDebt.findUnique({
+    
+    const personExists = await prisma.person.findUnique({
       where: { id: personId },
     });
     if (!personExists) {
@@ -22,7 +22,7 @@ export const makeCurrentDebt = async (data: CurrentDebtRequestDto) => {
       );
     }
 
-    // All checks passed, proceed to create the bank
+  
     return await prisma.currentDebt.create({
       data: {
         ...data,
@@ -36,9 +36,9 @@ export const makeCurrentDebt = async (data: CurrentDebtRequestDto) => {
     throw new HttpException(HttpStatus.BAD_REQUEST, errors.join(". "));
   }
 };
-//This to include person in the bank
+
 export const getCurrentDebts = async () => {
-  //get all banks and the associated persons
+
   const currentDebts = await prisma.currentDebt.findMany({
     include: {
       person: true,
@@ -48,7 +48,7 @@ export const getCurrentDebts = async () => {
   return currentDebts;
 };
 export const getCurrentDebtById = async (id: string) => {
-  //get a bank by id and populate
+  
   const currentDebt = await prisma.currentDebt.findUnique({
     where: {
       id,
