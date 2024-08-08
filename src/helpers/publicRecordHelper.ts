@@ -13,6 +13,18 @@ export const createPublicRecord = async (publicRecordData: publicRecords) => {
     const validatePulicRecordData =
       PublicRecordsSchema.safeParse(publicRecordData);
     if (validatePulicRecordData.success) {
+      const { personId } = publicRecordData;
+
+      // Check if the person exists only if personId is provided
+      if (personId) {
+        const personExists = await prisma.person.findUnique({
+          where: { id: personId },
+        });
+        if (!personExists) {
+          throw new HttpException(HttpStatus.NOT_FOUND, "Person not found.");
+        }
+      }
+
       const publicRecord = await prisma.publicRecords.create({
         data: { ...publicRecordData },
       });

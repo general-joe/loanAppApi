@@ -5,10 +5,22 @@ import { HttpStatus } from "../utils/http-status";
 import { ErrorResponse } from "../utils/types";
 import { LoanRequestDto, LoanSchema } from "../validators/loanSchema";
 
-export const requestLoan = async (loanData: loan) => {
+export const requestLoan = async (loanData: LoanRequestDto) => {
   try {
     const validateLoandata = LoanSchema.safeParse(loanData);
     if (validateLoandata.success) {
+      const { personId } = loanData;
+
+      // Check if the person exists only if personId is provided
+      if (personId) {
+        const personExists = await prisma.person.findUnique({
+          where: { id: personId },
+        });
+        if (!personExists) {
+          throw new HttpException(HttpStatus.NOT_FOUND, "Person not found.");
+        }
+      }
+
       const newLoan = await prisma.loan.create({ data: { ...loanData } });
       return newLoan as loan;
     } else {
@@ -28,7 +40,7 @@ export const requestLoan = async (loanData: loan) => {
 
 export const getAllLoans = async () => {
   try {
-    const loans = await prisma.loan.findMany();
+    const loans = await prisma.loan.findMany({ include: { person: true } });
     return loans as loan[];
   } catch (error) {
     const err = error as ErrorResponse;
@@ -41,7 +53,10 @@ export const getAllLoans = async () => {
 
 export const getLoanById = async (id: string) => {
   try {
-    const loan = await prisma.loan.findUnique({ where: { id } });
+    const loan = await prisma.loan.findUnique({
+      where: { id },
+      include: { person: true },
+    });
     return loan as loan;
   } catch (error) {
     const err = error as ErrorResponse;
