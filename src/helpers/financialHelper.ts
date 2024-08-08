@@ -12,7 +12,7 @@ export const makeFinancial = async (data: FinancialRequestDto) => {
     // The data contains personId
     const { personId } = data;
     // Check if the person exists
-    const personExists = await prisma.financial.findUnique({
+    const personExists = await prisma.person.findUnique({
       where: { id: personId },
     });
     if (!personExists) {

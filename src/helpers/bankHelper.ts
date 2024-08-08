@@ -8,7 +8,7 @@ export const makeBank = async (data: BankRequestDto) => {
   if (validate.success) {
     const { personId } = data;
 
-    const personExists = await prisma.user.findUnique({
+    const personExists = await prisma.person.findUnique({
       where: { id: personId },
     });
     if (!personExists) {

@@ -12,7 +12,7 @@ export const makeCurrentDebt = async (data: CurrentDebtRequestDto) => {
     
     const { personId } = data;
     
-    const personExists = await prisma.currentDebt.findUnique({
+    const personExists = await prisma.person.findUnique({
       where: { id: personId },
     });
     if (!personExists) {

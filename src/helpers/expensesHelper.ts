@@ -11,7 +11,7 @@ export const makeExpenses = async (data: ExpensesRequestDto) => {
   if (validate.success) {
     const { personId } = data;
 
-    const personExists = await prisma.expenses.findUnique({
+    const personExists = await prisma.person.findUnique({
       where: { id: personId },
     });
     if (!personExists) {

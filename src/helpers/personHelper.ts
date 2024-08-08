@@ -8,7 +8,7 @@ export const makePerson = async (data: PersonRequestDto) => {
   if (validate.success) {
     const { nationalID } = data;
 
-    const personExists = await prisma.user.findUnique({
+    const personExists = await prisma.person.findUnique({
       where: { id: nationalID },
     });
     if (!personExists) {
