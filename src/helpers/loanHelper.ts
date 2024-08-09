@@ -4,12 +4,13 @@ import HttpException from "../utils/http-error";
 import { HttpStatus } from "../utils/http-status";
 import { ErrorResponse } from "../utils/types";
 import { LoanRequestDto, LoanSchema } from "../validators/loanSchema";
+import { connect } from "http2";
 
 export const requestLoan = async (loanData: LoanRequestDto) => {
   try {
     const validateLoandata = LoanSchema.safeParse(loanData);
     if (validateLoandata.success) {
-      const { personId } = loanData;
+      const { personId, ...restLoanData } = loanData;
 
       // Check if the person exists only if personId is provided
       if (personId) {
@@ -21,7 +22,9 @@ export const requestLoan = async (loanData: LoanRequestDto) => {
         }
       }
 
-      const newLoan = await prisma.loan.create({ data: { ...loanData } });
+      const newLoan = await prisma.loan.create({
+        data: { ...restLoanData, person: { connect: { id: personId } } },
+      });
       return newLoan as loan;
     } else {
       const errors = validateLoandata.error.issues.map(
