@@ -12,7 +12,7 @@ export const makeFinancial = async (data: FinancialRequestDto) => {
     // The data contains personId
     const { personId } = data;
     // Check if the person exists
-    const personExists = await prisma.financial.findUnique({
+    const personExists = await prisma.person.findUnique({
       where: { id: personId },
     });
     if (!personExists) {
@@ -36,9 +36,9 @@ export const makeFinancial = async (data: FinancialRequestDto) => {
     throw new HttpException(HttpStatus.BAD_REQUEST, errors.join(". "));
   }
 };
-//This to include person in the bank
+
 export const getFinancials = async () => {
-  //get all banks and the associated persons
+  
   const financial = await prisma.financial.findMany({
     include: {
       person: true,
@@ -48,7 +48,7 @@ export const getFinancials = async () => {
   return financial;
 };
 export const getFinancialById = async (id: string) => {
-  //get a bank by id and populate
+
   const financial = await prisma.financial.findUnique({
     where: {
       id,

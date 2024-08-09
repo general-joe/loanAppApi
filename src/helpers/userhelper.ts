@@ -20,7 +20,7 @@ export const createUser = async (userData: UserRequestDto) => {
   if (validateUser.success) {
     const { fullName, email, password, company } = userData;
 
-    // checking if user exists
+    
     const findUser = await prisma.user.findUnique({ where: { email } });
     if (findUser) {
       throw new HttpException(HttpStatus.BAD_REQUEST, "User Already exist");
