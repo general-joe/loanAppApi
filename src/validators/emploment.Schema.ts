@@ -1,4 +1,4 @@
-import {z} from "Zod"
+import {z} from "zod"
 const employmentType = z.enum([
     "FULLTIME",
     "PARTTIME",
