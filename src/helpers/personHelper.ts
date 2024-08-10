@@ -3,7 +3,10 @@ import { HttpStatus } from "../utils/http-status";
 import prisma from "../utils/prisma";
 import { PersonRequestDto, PersonSchema } from "../validators/personSchema";
 
-export const makePerson = async (data: PersonRequestDto) => {
+export const makePerson = async (
+  data: PersonRequestDto,
+  picture: { passportPictureUrlUrl: string; passportPictureKey: string }
+) => {
   const validate = PersonSchema.safeParse(data);
   if (validate.success) {
     const { nationalID } = data;
@@ -11,12 +14,16 @@ export const makePerson = async (data: PersonRequestDto) => {
     const personExists = await prisma.person.findUnique({
       where: { id: nationalID },
     });
-    if (!personExists) {
-      throw new HttpException(HttpStatus.NOT_FOUND, "Person does not exist. ");
+    if (personExists) {
+      throw new HttpException(HttpStatus.NOT_FOUND, "Person already exist. ");
     }
 
     return await prisma.person.create({
-      data,
+      data: {
+        ...data,
+        passportPictureUrl: picture.passportPictureUrlUrl,
+        passportPictureKey: picture.passportPictureKey,
+      },
     });
   } else if ("error" in validate) {
     const errors = validate.error.issues.map(
@@ -82,8 +89,8 @@ export const updatePerson = async (id: string, data: PersonRequestDto) => {
       telephone: validate.telephone,
       previousPhone: validate.previousPhone,
       nationalID: validate.nationalID,
-      passportPictureUrl: validate.passportPictureUrl,
-      passportPictureKey: validate.passportPictureKey,
+      // passportPictureUrl: validate.passportPictureUrl,
+      // passportPictureKey: validate.passportPictureKey,
     },
   });
   return person;
