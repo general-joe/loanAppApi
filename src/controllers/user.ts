@@ -16,6 +16,7 @@ interface UserData {
   fullName: string;
   email: string;
   password: string;
+  secret: string,
   company: string;
   createdAt?: Date;
   updatedAt?: Date;
