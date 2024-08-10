@@ -84,10 +84,25 @@ export const deleteLoan = async (id: string) => {
 
 export const updateLoan = async (id: string, loanData: loan) => {
   try {
+    const { personId, ...restLoanData } = loanData;
+
+    // Check if the person exists only if personId is provided and not null
+    if (personId) {
+      const personExists = await prisma.person.findUnique({
+        where: { id: personId },
+      });
+      if (!personExists) {
+        throw new HttpException(HttpStatus.NOT_FOUND, "Person not found.");
+      }
+    }
     const updatedLoan = await prisma.loan.update({
       where: { id },
-      data: { ...loanData },
+      data: {
+        ...restLoanData,
+        person: personId ? { connect: { id: personId } } : undefined, // Only connect if personId is not null
+      },
     });
+
     return updatedLoan as loan;
   } catch (error) {
     const err = error as ErrorResponse;
