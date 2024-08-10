@@ -1,14 +1,14 @@
 import { Router } from "express";
 import {
-    generateOtp,
-    verifyOtp,
+   authlogin,
+   verifyOtp
   
 
 } from "../controllers/authentication.controller"
 
 const authRouter = Router();
 
-authRouter.post("/auth-login", generateOtp);
+authRouter.post("/auth-login", authlogin);
 
 authRouter.post("/verify", verifyOtp);
 

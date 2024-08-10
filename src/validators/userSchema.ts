@@ -12,6 +12,7 @@ export const UserSchema = z.object({
     .string({ required_error: "Password is required" })
     .min(8, "Password must be at least 8 characters long"),
   company: z.string().optional(),
+  secret: z.string({required_error: " Invalid secret"})
 });
 
 export type UserRequestDto = z.infer<typeof UserSchema>;
