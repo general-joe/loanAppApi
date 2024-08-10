@@ -1,5 +1,5 @@
 import {Router} from "express"
-import { generateOtp } from "../controllers/authentication.controller";
+//import { generateOtp } from "../controllers/authentication.controller";
 import {
   signUp,
   logIn,
@@ -22,7 +22,7 @@ const userRouter = Router()
 
 
 userRouter.post("/signup",  signUp);
-userRouter.post("/login", logIn, generateOtp);
+//userRouter.post("/login", logIn, generateOtp);
 userRouter.post("/logout", logout);
 userRouter.get("/", getUsers);
 userRouter.get("/profile", getUserProfile);
