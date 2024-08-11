@@ -7,13 +7,14 @@ import {
   PublicRecordsRequestDto,
   PublicRecordsSchema,
 } from "../validators/publicRecordSchema";
+import { connect } from "http2";
 
 export const createPublicRecord = async (publicRecordData: publicRecords) => {
   try {
     const validatePulicRecordData =
       PublicRecordsSchema.safeParse(publicRecordData);
     if (validatePulicRecordData.success) {
-      const { personId } = publicRecordData;
+      const { personId ,...restPublicRecordData} = publicRecordData;
 
       // Check if the person exists only if personId is provided
       if (personId) {
@@ -26,8 +27,14 @@ export const createPublicRecord = async (publicRecordData: publicRecords) => {
       }
 
       const publicRecord = await prisma.publicRecords.create({
-        data: { ...publicRecordData },
+        data: {
+          ...restPublicRecordData, // Spread the rest of the public record data excluding personId
+          person:personId ? {
+            connect: { id: personId }, // Explicitly connecting the personId
+          }:undefined
+        },
       });
+  
       return publicRecord as publicRecords;
     } else {
       const errors = validatePulicRecordData.error.issues.map(
@@ -82,10 +89,28 @@ export const updatePublicRecord = async (
   publicRecordData: publicRecords
 ) => {
   try {
+    const { personId, ...restPublicRecordData } = publicRecordData;
+
+    // Check if the person exists only if personId is provided and not null
+    if (personId) {
+      const personExists = await prisma.person.findUnique({
+        where: { id: personId },
+      });
+      if (!personExists) {
+        throw new HttpException(HttpStatus.NOT_FOUND, "Person not found.");
+      }
+    }
+
+    // Update the public record and connect it to the person if personId is not null
     const updateRecord = await prisma.publicRecords.update({
       where: { id },
-      data: { ...publicRecordData },
+      data: {
+        ...restPublicRecordData, // Spread the rest of the public record data excluding personId
+        person: personId ? { connect: { id: personId } } : undefined, // Only connect if personId is not null
+      },
     });
+
+    return updateRecord;
   } catch (error) {
     const err = error as ErrorResponse;
     throw new HttpException(
@@ -94,7 +119,6 @@ export const updatePublicRecord = async (
     );
   }
 };
-
 export const deletePublicRecord = async (id: string) => {
   try {
     await prisma.publicRecords.delete({ where: { id } });

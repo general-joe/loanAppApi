@@ -23,6 +23,7 @@
       "fullName",
       "email",
       "password",
+      "secret",
       "company",
       "del_flag",
       "createdAt",

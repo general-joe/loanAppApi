@@ -33,14 +33,14 @@ export const PersonSchema = z.object({
     .string({ required_error: "National ID is required" })
     .trim()
     .min(1, { message: "National ID cannot be empty" }),
-  passportPictureUrl: z
-    .string({ required_error: "Passport picture URL is required" })
-    .trim()
-    .url({ message: "Passport picture URL must be a valid URL" }),
-  passportPictureKey: z
-    .string({ required_error: "Passport picture key is required" })
-    .trim()
-    .min(1, { message: "Passport picture key cannot be empty" }),
+  // passportPictureUrl: z
+  //   .string({ required_error: "Passport picture URL is required" })
+  //   .trim()
+  //   .url({ message: "Passport picture URL must be a valid URL" }),
+  // passportPictureKey: z
+  //   .string({ required_error: "Passport picture key is required" })
+  //   .trim()
+  //   .min(1, { message: "Passport picture key cannot be empty" }),
 });
 
 export type PersonRequestDto = z.infer<typeof PersonSchema>;

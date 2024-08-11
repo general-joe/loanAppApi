@@ -9,12 +9,14 @@ import HttpException from "../utils/http-error";
 import { ErrorResponse } from "../utils/types";
 import { UserPayload, setInvalidToken, signToken } from "../utils/jsonwebtoken";
 import cloudinary from "../utils/cloudinary";
+import { generateOtp, sendOtpEmail ,verifyOtp} from "../helpers/otpHelper";
 
 interface UserData {
   id: string;
   fullName: string;
   email: string;
   password: string;
+  secret: string;
   company: string;
   createdAt?: Date;
   updatedAt?: Date;
@@ -57,18 +59,21 @@ export const logIn = async (
       "Please provide all fields"
     );
   }
+
   try {
     const user = await userHelper.getUserByEmail(userData.email);
 
-    if (!user)
+    if (!user) {
       throw new HttpException(HttpStatus.NOT_FOUND, "User Does not Exist");
+    }
 
     const isMatch = await bcrypt.compare(userData.password, user.password);
-    if (!isMatch)
+    if (!isMatch) {
       throw new HttpException(
         HttpStatus.UNAUTHORIZED,
         "Invalid User Credentials"
       );
+
   } catch (error) {
     const err = error as ErrorResponse;
     next(
@@ -204,5 +209,18 @@ export const getUserById = async (
         err.message
       )
     );
+  }
+};
+export const VerifyOtp = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { email, otp } = req.body;
+    const token = await verifyOtp(email, otp);
+    res.status(200).json({ message: "OTP verified successfully", token });
+  } catch (error) {
+    next(error);
   }
 };

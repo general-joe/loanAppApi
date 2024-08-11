@@ -1,12 +1,16 @@
 import { Request, Response, NextFunction } from "express";
-import { makePerson, getPersons, getPersonById, updatePerson, deletePerson } from "../helpers/personHelper";
+import {
+  makePerson,
+  getPersons,
+  getPersonById,
+  updatePerson,
+  deletePerson,
+} from "../helpers/personHelper";
 import { HttpStatus } from "../utils/http-status";
 import HttpException from "../utils/http-error";
 import { ErrorResponse } from "../utils/types";
 import { PersonRequestDto } from "../validators/personSchema";
 import cloudinary from "../utils/cloudinary";
-
-
 
 export const savePerson = async (
   req: Request,
@@ -16,17 +20,22 @@ export const savePerson = async (
   try {
     const data = req.body satisfies PersonRequestDto;
     const photo = req.file ? req.file.path : undefined;
-
+    const picture = {
+      passportPictureUrlUrl: "",
+      passportPictureKey: "",
+    };
     if (photo) {
       const uploaded = await cloudinary.uploader.upload(photo, {
         folder: "persons/",
       });
       if (uploaded) {
-        data.passportPictureUrlUrl = uploaded.secure_url;
-        data.passportPictureKey = uploaded.public_id;
+        picture.passportPictureUrlUrl = uploaded.secure_url;
+        picture.passportPictureKey = uploaded.public_id;
       }
     }
-    const person = await makePerson(data);
+    data.dob = new Date(data.dob);
+    data.noOfDependants = Number(data.noOfDependants);
+    const person = await makePerson(data, picture);
     res.status(HttpStatus.CREATED).json({ person });
   } catch (error) {
     const err = error as ErrorResponse;

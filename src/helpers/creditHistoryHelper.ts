@@ -82,10 +82,25 @@ export const updateCreditHistory = async (
   creditData: creditHistory
 ) => {
   try {
+    const { personId, ...restCreditData } = creditData;
+
+    // Check if the person exists only if personId is provided and not null
+    if (personId) {
+      const personExists = await prisma.person.findUnique({
+        where: { id: personId },
+      });
+      if (!personExists) {
+        throw new HttpException(HttpStatus.NOT_FOUND, "Person not found.");
+      }
+    }
     const updated = await prisma.creditHistory.update({
       where: { id },
-      data: { ...creditData },
+      data: {
+        ...restCreditData,
+        person: personId ? { connect: { id: personId } } : undefined, // Only connect if personId is not null
+      },
     });
+
     return updated as creditHistory;
   } catch (error) {
     const err = error as ErrorResponse;
@@ -107,4 +122,3 @@ export const deleteCreditHistory = async (id: string) => {
     );
   }
 };
-

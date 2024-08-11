@@ -4,12 +4,13 @@ import HttpException from "../utils/http-error";
 import { HttpStatus } from "../utils/http-status";
 import { ErrorResponse } from "../utils/types";
 import { LoanRequestDto, LoanSchema } from "../validators/loanSchema";
+import { connect } from "http2";
 
 export const requestLoan = async (loanData: LoanRequestDto) => {
   try {
     const validateLoandata = LoanSchema.safeParse(loanData);
     if (validateLoandata.success) {
-      const { personId } = loanData;
+      const { personId, ...restLoanData } = loanData;
 
       // Check if the person exists only if personId is provided
       if (personId) {
@@ -21,7 +22,9 @@ export const requestLoan = async (loanData: LoanRequestDto) => {
         }
       }
 
-      const newLoan = await prisma.loan.create({ data: { ...loanData } });
+      const newLoan = await prisma.loan.create({
+        data: { ...restLoanData, person: { connect: { id: personId } } },
+      });
       return newLoan as loan;
     } else {
       const errors = validateLoandata.error.issues.map(
@@ -81,10 +84,25 @@ export const deleteLoan = async (id: string) => {
 
 export const updateLoan = async (id: string, loanData: loan) => {
   try {
+    const { personId, ...restLoanData } = loanData;
+
+    // Check if the person exists only if personId is provided and not null
+    if (personId) {
+      const personExists = await prisma.person.findUnique({
+        where: { id: personId },
+      });
+      if (!personExists) {
+        throw new HttpException(HttpStatus.NOT_FOUND, "Person not found.");
+      }
+    }
     const updatedLoan = await prisma.loan.update({
       where: { id },
-      data: { ...loanData },
+      data: {
+        ...restLoanData,
+        person: personId ? { connect: { id: personId } } : undefined, // Only connect if personId is not null
+      },
     });
+
     return updatedLoan as loan;
   } catch (error) {
     const err = error as ErrorResponse;
