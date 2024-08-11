@@ -10,7 +10,6 @@ import { ErrorResponse } from "../utils/types";
 import { UserPayload, setInvalidToken, signToken } from "../utils/jsonwebtoken";
 import cloudinary from "../utils/cloudinary";
 
-
 interface UserData {
   id: string;
   fullName: string;
@@ -70,7 +69,6 @@ export const logIn = async (
         HttpStatus.UNAUTHORIZED,
         "Invalid User Credentials"
       );
-
   } catch (error) {
     const err = error as ErrorResponse;
     next(
