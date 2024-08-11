@@ -18,7 +18,9 @@ export const saveCurrentDebt = async (
 ) => {
   try {
     const data = req.body satisfies CurrentDebtRequestDto;
-
+    data.loanAmount = Number(data.loanAmount);
+    data.outstandingBalance = Number(data.outstandingBalance);
+    data.monthlyPaymentObligation = Number(data.monthlyPaymentObligation);
     const currentDebt = await makeCurrentDebt(data);
     res.status(HttpStatus.CREATED).json({ currentDebt });
   } catch (error) {
