@@ -73,7 +73,18 @@ export const logIn = async (
         HttpStatus.UNAUTHORIZED,
         "Invalid User Credentials"
       );
+    }
 
+    // Generate OTP
+    const otp = generateOtp();
+
+    // Send OTP via email
+    await sendOtpEmail(userData.email, otp);
+
+    // Respond to the client that OTP has been sent
+    res.status(HttpStatus.OK).json({
+      message: "OTP sent to your email. Please verify to complete login.",
+    });
   } catch (error) {
     const err = error as ErrorResponse;
     next(
