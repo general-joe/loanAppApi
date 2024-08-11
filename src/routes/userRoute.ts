@@ -9,12 +9,14 @@ import {
   deleteUser,
   logout,
   getUserProfile,
+  VerifyOtp,
 } from "../controllers/user";
 import { validatePayload } from "../middleware/validate-payload";
 import upload from "../utils/multer";
 const userRouter = Router();
 
 userRouter.post("/signup", signUp);
+userRouter.post("/verifyotp", VerifyOtp);
 userRouter.post("/login", logIn);
 userRouter.post("/logout", logout);
 userRouter.get("/", getUsers);
