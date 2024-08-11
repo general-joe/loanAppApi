@@ -20,7 +20,7 @@ export const saveCurrentDebt = async (
     const data = req.body satisfies CurrentDebtRequestDto;
     data.loanAmount = Number(data.loanAmount);
     data.outstandingBalance = Number(data.outstandingBalance);
-    data.monthlyPaymentObligation = Number(data.monthlyPaymentObligation);
+    data.monthlyPaymentObligations = Number(data.monthlyPaymentObligations);
     const currentDebt = await makeCurrentDebt(data);
     res.status(HttpStatus.CREATED).json({ currentDebt });
   } catch (error) {
