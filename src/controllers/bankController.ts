@@ -18,7 +18,7 @@ export const saveBank = async (
 ) => {
   try {
     const data = req.body satisfies BankRequestDto;
-
+    data.balance = Number(data.balance);
     const bank = await makeBank(data);
     res.status(HttpStatus.CREATED).json({ bank });
   } catch (error) {

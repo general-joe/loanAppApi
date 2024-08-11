@@ -18,7 +18,7 @@ export const saveExpenses = async (
 ) => {
   try {
     const data = req.body satisfies ExpensesRequestDto;
-
+    data.amount = Number(data.amount);
     const expenses = await makeExpenses(data);
     res.status(HttpStatus.CREATED).json({ expenses });
   } catch (error) {
