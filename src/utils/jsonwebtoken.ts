@@ -1,7 +1,9 @@
 import { Request, Response, NextFunction } from "express";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
+import HttpException from "./http-error";
 import { HttpStatus } from "./http-status";
 
+// Define a UserPayload interface to ensure strong typing
 export interface UserPayload {
   id: string;
 }
@@ -14,7 +16,8 @@ declare global {
   }
 }
 
-const authenticateJWT = (
+// Middleware to authenticate JWT tokens
+export const authenticateJWT = (
   req: Request,
   res: Response,
   next: NextFunction
@@ -23,28 +26,44 @@ const authenticateJWT = (
   const token = authHeader?.split(" ")[1];
 
   if (token) {
-    jwt.verify(token, process.env.JWT_SECRET as string, (err, user) => {
+    jwt.verify(token, process.env.JWT_SECRET as string, (err, decoded) => {
       if (err) {
-        return res
-          .status(HttpStatus.FORBIDDEN)
-          .json({ message: "Invalid token" });
+        return next(
+          new HttpException(HttpStatus.FORBIDDEN, "Invalid token")
+        );
       }
-      req.user = user as UserPayload;
+      req.user = decoded as UserPayload; // Attach user data to the request
       next();
     });
   } else {
-    res.status(HttpStatus.FORBIDDEN).json({ message: "No token found" });
+    next(new HttpException(HttpStatus.FORBIDDEN, "No token found"));
   }
 };
 
-export const signToken = (payload: UserPayload) =>
-  jwt.sign(payload, process.env.JWT_SECRET as string, {
+// Function to sign a JWT token with the user payload
+export const signToken = (payload: UserPayload): string => {
+  if (!process.env.JWT_SECRET || !process.env.JWT_EXPIRES_IN) {
+    throw new HttpException(
+      HttpStatus.INTERNAL_SERVER_ERROR,
+      "JWT configuration is missing"
+    );
+  }
+  return jwt.sign(payload, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
+};
 
-export const setInvalidToken = () =>
-  jwt.sign({ logout: "logout" }, process.env.JWT_SECRET as string, {
-    expiresIn: 30,
+// Function to create a short-lived invalidation token
+export const setInvalidToken = (): string => {
+  if (!process.env.JWT_SECRET) {
+    throw new HttpException(
+      HttpStatus.INTERNAL_SERVER_ERROR,
+      "JWT secret is missing"
+    );
+  }
+  return jwt.sign({ logout: "logout" }, process.env.JWT_SECRET, {
+    expiresIn: "30s", // Short-lived token
   });
+};
 
-export default authenticateJWT;
+

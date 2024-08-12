@@ -18,6 +18,7 @@ export const saveFinancial = async (
 ) => {
   try {
     const data = req.body satisfies FinancialRequestDto;
+    data.amount = Number(data.amount);
 
     const financial = await makeFinancial(data);
     res.status(HttpStatus.CREATED).json({ financial });
