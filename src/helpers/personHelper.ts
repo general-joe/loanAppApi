@@ -15,7 +15,7 @@ export const makePerson = async (
       where: { id: nationalID },
     });
     if (personExists) {
-      throw new HttpException(HttpStatus.NOT_FOUND, "Person already exist. ");
+      throw new HttpException(HttpStatus.BAD_REQUEST, "Person already exist. ");
     }
 
     return await prisma.person.create({
