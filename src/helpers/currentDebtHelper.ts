@@ -9,9 +9,8 @@ import {
 export const makeCurrentDebt = async (data: CurrentDebtRequestDto) => {
   const validate = CurrentDebtSchema.safeParse(data);
   if (validate.success) {
-    
     const { personId } = data;
-    
+
     const personExists = await prisma.person.findUnique({
       where: { id: personId },
     });
@@ -22,7 +21,6 @@ export const makeCurrentDebt = async (data: CurrentDebtRequestDto) => {
       );
     }
 
-  
     return await prisma.currentDebt.create({
       data: {
         ...data,
@@ -38,7 +36,6 @@ export const makeCurrentDebt = async (data: CurrentDebtRequestDto) => {
 };
 
 export const getCurrentDebts = async () => {
-
   const currentDebts = await prisma.currentDebt.findMany({
     include: {
       person: true,
@@ -48,7 +45,6 @@ export const getCurrentDebts = async () => {
   return currentDebts;
 };
 export const getCurrentDebtById = async (id: string) => {
-  
   const currentDebt = await prisma.currentDebt.findUnique({
     where: {
       id,
@@ -64,17 +60,17 @@ export const updateCurrentDebt = async (
   id: string,
   data: CurrentDebtRequestDto
 ) => {
-  const validate = CurrentDebtSchema.parse(data);
+  // const validate = CurrentDebtSchema.parse(data);
   const currentDebt = await prisma.currentDebt.update({
     where: {
       id: id,
     },
     data: {
-      loanAmount: validate.loanAmount,
-      existingLoanType: validate.existingLoanType,
-      outstandingBalance: validate.outstandingBalance,
-      monthlyPaymentObligations: validate.monthlyPaymentObligations,
-      personId: validate.personId,
+      loanAmount: data.loanAmount,
+      existingLoanType: data.existingLoanType,
+      outstandingBalance: data.outstandingBalance,
+      monthlyPaymentObligations: data.monthlyPaymentObligations,
+      personId: data.personId,
     },
   });
   return currentDebt;

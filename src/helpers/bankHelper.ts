@@ -54,19 +54,19 @@ export const getBankById = async (id: string) => {
 };
 
 export const updateBank = async (id: string, data: BankRequestDto) => {
-  const validate = BankSchema.parse(data);
+  // const validate = BankSchema.parse(data);
   const bank = await prisma.bank.update({
     where: {
       id: id,
     },
     data: {
-      accountNumber: validate.accountNumber,
-      accountName: validate.accountName,
-      bankName: validate.bankName,
-      branchName: validate.branchName,
-      type: validate.type,
-      balance: validate.balance,
-      personId: validate.personId,
+      accountNumber: data.accountNumber,
+      accountName: data.accountName,
+      bankName: data.bankName,
+      branchName: data.branchName,
+      type: data.type,
+      balance: data.balance,
+      personId: data.personId,
     },
   });
   return bank;

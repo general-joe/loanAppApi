@@ -74,21 +74,21 @@ export const getPersonById = async (id: string) => {
 };
 
 export const updatePerson = async (id: string, data: PersonRequestDto) => {
-  const validate = PersonSchema.parse(data);
+  // const validate = PersonSchema.parse(data);
   const person = await prisma.person.update({
     where: {
       id: id,
     },
     data: {
-      fullname: validate.fullname,
-      maritalStatus: validate.maritalStatus,
-      noOfDependants: validate.noOfDependants,
-      previousHomeAddress: validate.previousHomeAddress,
-      currentHomeAddress: validate.currentHomeAddress,
-      email: validate.email,
-      telephone: validate.telephone,
-      previousPhone: validate.previousPhone,
-      nationalID: validate.nationalID,
+      fullname: data.fullname,
+      maritalStatus: data.maritalStatus,
+      noOfDependants: data.noOfDependants,
+      previousHomeAddress: data.previousHomeAddress,
+      currentHomeAddress: data.currentHomeAddress,
+      email: data.email,
+      telephone: data.telephone,
+      previousPhone: data.previousPhone,
+      nationalID: data.nationalID,
       // passportPictureUrl: validate.passportPictureUrl,
       // passportPictureKey: validate.passportPictureKey,
     },

@@ -57,16 +57,17 @@ export const getExpensestById = async (id: string) => {
 };
 
 export const updateExpenses = async (id: string, data: ExpensesRequestDto) => {
-  const validate = ExpensesSchema.parse(data);
+  // const validate = ExpensesSchema.parse(data);
   const expenses = await prisma.expenses.update({
     where: {
       id: id,
     },
     data: {
-      type: validate.type,
-      amount: validate.amount,
+      type: data.type,
+      type: data.type,
+      amount: data.amount,
 
-      personId: validate.personId,
+      personId: data.personId,
     },
   });
   return expenses;

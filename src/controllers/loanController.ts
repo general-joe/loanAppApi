@@ -12,7 +12,9 @@ export const requestLoan = async (
 ) => {
   try {
     const loanData: LoanRequestDto = req.body satisfies LoanRequestDto;
-    const newLoan = await loanHelper.requestLoan({...loanData });
+    loanData.loanAmountRequested = Number(loanData.loanAmountRequested);
+    loanData.loanTerm = Number(loanData.loanTerm);
+    const newLoan = await loanHelper.requestLoan({ ...loanData });
     res.status(HttpStatus.CREATED).json(newLoan);
   } catch (error) {
     const err = error as ErrorResponse;
