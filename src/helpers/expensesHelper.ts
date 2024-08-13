@@ -64,9 +64,7 @@ export const updateExpenses = async (id: string, data: ExpensesRequestDto) => {
     },
     data: {
       type: data.type,
-      type: data.type,
       amount: data.amount,
-
       personId: data.personId,
     },
   });
