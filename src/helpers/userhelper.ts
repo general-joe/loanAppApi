@@ -16,6 +16,9 @@ interface UserData {
   createdAt?: Date;
   updatedAt?: Date;
 }
+interface UserWithoutPassword extends Omit<UserData, "password"> {
+  password?: string;
+}
 
 export const createUser = async (userData: UserRequestDto) => {
   const validateUser = UserSchema.safeParse(userData);
@@ -26,7 +29,7 @@ export const createUser = async (userData: UserRequestDto) => {
     throw new HttpException(HttpStatus.BAD_REQUEST, errors.join(". "));
   }
 
-  const { email, fullName, password, company } = userData;
+  const { email } = userData;
 
   const findUser = await prisma.user.findUnique({ where: { email } });
   if (findUser) {
@@ -41,18 +44,18 @@ export const createUser = async (userData: UserRequestDto) => {
     );
   }
 
-  const otp = generateOtp(); // Generate the OTP
+  // const otp = generateOtp(); // Generate the OTP
 
   try {
     // Send OTP email
-    await sendOtpEmail(email, otp);
+    // await sendOtpEmail(email, otp);
 
     // If OTP sent successfully, create the user
     const newUser = await prisma.user.create({
       data: {
         ...userData,
         password: hashedpsswd,
-        otp, // Save the OTP with the user
+        // otp, // Save the OTP with the user
       },
     });
 
@@ -65,8 +68,6 @@ export const createUser = async (userData: UserRequestDto) => {
     );
   }
 };
-
-
 
 export const getUserByEmail = async (email: string) => {
   try {
@@ -118,8 +119,11 @@ export const deleteUser = async (userId: string) => {
 
 export const getUserById = async (id: string) => {
   try {
-    const user = await prisma.user.findUnique({ where: { id } });
-    return user as UserData | null;
+    const user = (await prisma.user.findUnique({
+      where: { id },
+    })) as UserWithoutPassword | null;
+    delete user?.password;
+    return user;
   } catch (error) {
     const err = error as ErrorResponse;
     throw new HttpException(err.status || HttpStatus.BAD_REQUEST, err.message);
