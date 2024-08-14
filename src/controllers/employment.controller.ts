@@ -9,11 +9,11 @@ import {
     updateRecords,
     deleteRecords
 } from "../helpers/employmentHelper"
-import { employmentRecords } from "../validators/emploment.Schema";
+import { employmentRecordsDto } from "../validators/employment.Schema";
 
 export const saveEmploymentRecords = async(req: Request, res: Response, next: NextFunction)=>{
     try{
-        const { data } = req.body satisfies employmentRecords
+        const { data } = req.body satisfies employmentRecordsDto;
         const records = await saveRecords(data)
         res.status(HttpStatus.CREATED).json({ records });
 
