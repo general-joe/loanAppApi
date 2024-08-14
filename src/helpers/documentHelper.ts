@@ -7,41 +7,46 @@ import {
   DocumentRequestDto,
   DocumentSchema,
 } from "../validators/documentSchema";
+import cloudinary from "../utils/cloudinary";
 
-export const createDocument = async (documentData: documents) => {
+export const createDocument = async (documentData: documents,picture: { documentUrl: string;documentKey: string }) => {
   try {
     const validatedDocument = DocumentSchema.safeParse(documentData);
 
-    if (validatedDocument.success) {
-      const { personId, ...restOfDocument } = documentData;
-      if (personId) {
-        const personExists = await prisma.person.findUnique({
-          where: { id: personId },
-        });
-        if (!personExists) {
-          throw new HttpException(HttpStatus.NOT_FOUND, "Person not found.");
-        }
-      }
-
-      const newDocumnent = await prisma.documents.create({
-        data: {
-          ...restOfDocument,
-          person: personId ? { connect: { id: personId } } : undefined,
-        },
-      });
-      return newDocumnent as documents;
-    } else {
+    if (!validatedDocument.success) {
       const errors = validatedDocument.error.issues.map(
-        ({ message, path }) => `${path}: ${message}`
+        ({ message, path }) => `${path.join('.')}: ${message}`
       );
       throw new HttpException(HttpStatus.BAD_REQUEST, errors.join(". "));
     }
+
+    const { personId, ...restOfDocument } = documentData;
+    
+    if (personId) {
+      const personExists = await prisma.person.findUnique({
+        where: { id: personId },
+      });
+      if (!personExists) {
+        throw new HttpException(HttpStatus.NOT_FOUND, "Person not found.");
+      }
+    }
+
+    const newDocument = await prisma.documents.create({
+      data: {
+        ...restOfDocument, documentUrl: picture.documentUrl,
+        documentKey: picture.documentKey,
+        person: personId ? { connect: { id: personId } } : undefined,
+      },
+    });
+    return newDocument as documents;
   } catch (error) {
     const err = error as ErrorResponse;
-    throw new HttpException(
-      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
-      err.message
-    );
+
+    // Handle Prisma errors or other errors more explicitly if needed
+    const status = err.status || HttpStatus.INTERNAL_SERVER_ERROR;
+    const message = err.message || "An unexpected error occurred.";
+
+    throw new HttpException(status, message);
   }
 };
 
@@ -78,7 +83,8 @@ export const getDocumentById = async (id: string) => {
 
 export const updateDocument = async (
   id: string,
-  documentData: Partial<documents>
+  documentData:documents,
+  picture?: { documentUrl: string; documentKey: string }
 ) => {
   try {
     const { personId, ...restDocumentData } = documentData;
@@ -93,14 +99,38 @@ export const updateDocument = async (
       }
     }
 
-    const editDocumet = await prisma.documents.update({
+    // Handle image update
+    if (picture) {
+      // Retrieve existing document to delete the old image if needed
+      const existingDocument = await prisma.documents.findUnique({
+        where: { id },
+      });
+
+      if (existingDocument?.documentKey) {
+        await cloudinary.uploader.destroy(existingDocument.documentKey);
+      }
+
+      // Include the new image data in the update
+      restDocumentData.documentUrl = picture.documentUrl;
+      restDocumentData.documentKey = picture.documentKey;
+    }
+
+    const updatedDocument = await prisma.documents.update({
       where: { id },
       data: {
         ...restDocumentData,
         person: personId ? { connect: { id: personId } } : undefined, // Only connect if personId is not null
       },
     });
-  } catch (error) {}
+
+    return updatedDocument;
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(
+      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      err.message
+    );
+  }
 };
 export const deleteDocument = async (id: string) => {
   try {

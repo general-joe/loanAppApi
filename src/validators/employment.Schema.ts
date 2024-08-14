@@ -7,11 +7,9 @@ const employmentType = z.enum([
 ])
 
 export const employmentSchema = z.object({
-    currentEmployerName: z.string(
-
-        {required_error: "Employee Name is required"}
-     
-    ).trim(),
+    currentEmployerName: z.string({required_error: "Employee Name is required"})
+    .trim()
+    .min(1, "Employer name is required"),
 
     currentEmployerAddress: z.string({
         required_error: "Address cannot be empty"
@@ -19,18 +17,18 @@ export const employmentSchema = z.object({
 
     position: z.string({
         required_error: "Position is required"
-    }),
+    }).min(1, "Employer name is required"),
     duration: z.number({
         required_error: "Number of duration is required"
-    }).min(0, "negative number is not required"),
+    }).min(1, "negative number is not required"),
     type: employmentType,
     previousEmploymentDetails: z.string({
         required_error: "Previous Employment Details cannot be empty"
     }).min(1, "Details are required"),
-    person: z.string({
+    personId: z.string({
         required_error: "No person found"
     }).optional()
 
 })
 
-export type employmentRecords = z.infer<typeof employmentSchema>;
+export type employmentRecordsDto = z.infer<typeof employmentSchema>;

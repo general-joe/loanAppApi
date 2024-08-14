@@ -5,6 +5,7 @@ import { ErrorResponse } from "../utils/types";
 import { HttpStatus } from "../utils/http-status";
 import { documents } from "@prisma/client";
 import { DocumentRequestDto } from "../validators/documentSchema";
+import cloudinary from "../utils/cloudinary";
 
 export const addDocument = async (
   req: Request,
@@ -13,10 +14,24 @@ export const addDocument = async (
 ) => {
   try {
     const documentData: documents = req.body satisfies DocumentRequestDto;
-    const newDocumnent = await documentHelper.createDocument(documentData);
-    res
-      .status(HttpStatus.OK)
-      .send({ message: "document added successfull", newDocumnent });
+    const photo = req.file ? req.file.path : undefined;
+    const picture = {
+      documentUrl: "",
+      documentKey: "",
+    };
+    if (photo) {
+      const uploaded = await cloudinary.uploader.upload(photo, {
+        folder: "document/",
+      });
+      if (uploaded) {
+        picture.documentUrl = uploaded.secure_url;
+        picture.documentKey = uploaded.public_id;
+      }
+      const newDocumnent = await documentHelper.createDocument(documentData,picture);
+      res
+        .status(HttpStatus.OK)
+        .send({ message: "document added successfully", newDocumnent });
+    }
   } catch (error) {
     const err = error as ErrorResponse;
     next(
@@ -35,11 +50,37 @@ export const updateDocument = async (
 ) => {
   try {
     const documentId = req.params.id;
-    const documentData: documents = req.body;
-    const editDocument = await documentHelper.updateDocument(
-      documentId,
-      documentData
-    );
+    const documentData: documents= req.body;
+    const photo = req.file ? req.file.path : undefined;
+    const picture = {
+      documentUrl: "",
+      documentKey: "",
+    };
+
+    // If a new image is provided, upload it to Cloudinary
+    if (photo) {
+      const uploaded = await cloudinary.uploader.upload(photo, {
+        folder: "document/",
+      });
+
+      if (uploaded) {
+        picture.documentUrl = uploaded.secure_url;
+        picture.documentKey = uploaded.public_id;
+
+        // Optionally delete the old image from Cloudinary if it exists
+        const existingDocument = await documentHelper.getDocumentById(documentId);
+        if (existingDocument?.documentKey) {
+          await cloudinary.uploader.destroy(existingDocument.documentKey);
+        }
+
+        // Include the new image data in the update
+        documentData.documentUrl = picture.documentUrl;
+        documentData.documentKey = picture.documentKey;
+      }
+    }
+
+    // Perform the update
+    const editDocument = await documentHelper.updateDocument(documentId, documentData);
     res.status(HttpStatus.OK).json(editDocument);
   } catch (error) {
     const err = error as ErrorResponse;
