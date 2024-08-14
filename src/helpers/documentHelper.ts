@@ -7,6 +7,7 @@ import {
   DocumentRequestDto,
   DocumentSchema,
 } from "../validators/documentSchema";
+import cloudinary from "../utils/cloudinary";
 
 export const createDocument = async (documentData: documents,picture: { documentUrl: string;documentKey: string }) => {
   try {
@@ -82,7 +83,8 @@ export const getDocumentById = async (id: string) => {
 
 export const updateDocument = async (
   id: string,
-  documentData: Partial<documents>
+  documentData:documents,
+  picture?: { documentUrl: string; documentKey: string }
 ) => {
   try {
     const { personId, ...restDocumentData } = documentData;
@@ -97,14 +99,38 @@ export const updateDocument = async (
       }
     }
 
-    const editDocumet = await prisma.documents.update({
+    // Handle image update
+    if (picture) {
+      // Retrieve existing document to delete the old image if needed
+      const existingDocument = await prisma.documents.findUnique({
+        where: { id },
+      });
+
+      if (existingDocument?.documentKey) {
+        await cloudinary.uploader.destroy(existingDocument.documentKey);
+      }
+
+      // Include the new image data in the update
+      restDocumentData.documentUrl = picture.documentUrl;
+      restDocumentData.documentKey = picture.documentKey;
+    }
+
+    const updatedDocument = await prisma.documents.update({
       where: { id },
       data: {
         ...restDocumentData,
         person: personId ? { connect: { id: personId } } : undefined, // Only connect if personId is not null
       },
     });
-  } catch (error) {}
+
+    return updatedDocument;
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(
+      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      err.message
+    );
+  }
 };
 export const deleteDocument = async (id: string) => {
   try {
