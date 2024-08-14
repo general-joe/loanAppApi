@@ -19,6 +19,6 @@ documentRouter.post(
 );
 documentRouter.get("/", getDocuments);
 documentRouter.get("/:id", getDocumentById);
-documentRouter.put("/update/:id", updateDocument);
+documentRouter.put("/update/:id", upload.single("document"),updateDocument);
 documentRouter.delete("/delete/:id", deleteDocument);
 export default documentRouter;
