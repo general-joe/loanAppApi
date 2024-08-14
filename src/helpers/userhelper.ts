@@ -41,18 +41,18 @@ export const createUser = async (userData: UserRequestDto) => {
     );
   }
 
-  const otp = generateOtp(); // Generate the OTP
+  // const otp = generateOtp(); // Generate the OTP
 
   try {
     // Send OTP email
-    await sendOtpEmail(email, otp);
+    // await sendOtpEmail(email, otp);
 
     // If OTP sent successfully, create the user
     const newUser = await prisma.user.create({
       data: {
         ...userData,
         password: hashedpsswd,
-        otp, // Save the OTP with the user
+        // otp, // Save the OTP with the user
       },
     });
 
@@ -65,8 +65,6 @@ export const createUser = async (userData: UserRequestDto) => {
     );
   }
 };
-
-
 
 export const getUserByEmail = async (email: string) => {
   try {

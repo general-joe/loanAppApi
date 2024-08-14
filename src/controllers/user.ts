@@ -2,14 +2,14 @@ import { NextFunction, Request, Response } from "express";
 import { jwtDecode } from "jwt-decode";
 import * as userHelper from "../helpers/userhelper";
 import * as bcrypt from "../utils/bcrypt";
-import jwt from "jsonwebtoken";
+
 import { HttpStatus } from "../utils/http-status";
 import { UserRequestDto } from "../validators/userSchema";
 import HttpException from "../utils/http-error";
 import { ErrorResponse } from "../utils/types";
-import { UserPayload, setInvalidToken, signToken } from "../utils/jsonwebtoken";
+import { UserPayload, setInvalidToken } from "../utils/jsonwebtoken";
 import cloudinary from "../utils/cloudinary";
-import { generateOtp, sendOtpEmail ,verifyOtp} from "../helpers/otpHelper";
+import { generateOtp, sendOtpEmail, verifyOtp } from "../helpers/otpHelper";
 
 interface UserData {
   id: string;
@@ -34,7 +34,7 @@ export const signUp = async (
     const newUser = await userHelper.createUser({ ...userData });
     const { password, ...user } = newUser;
     res.status(HttpStatus.CREATED).json({
-      newUser,
+      user,
     });
   } catch (error) {
     const err = error as ErrorResponse;
@@ -77,6 +77,10 @@ export const logIn = async (
 
     // Generate OTP
     const otp = generateOtp();
+
+    await userHelper.updateUser(user.id, {
+      otp,
+    });
 
     // Send OTP via email
     await sendOtpEmail(userData.email, otp);
