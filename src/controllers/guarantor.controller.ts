@@ -8,7 +8,7 @@ import {
     getRecordsById,
     updateRecords,
     deleteRecords
-} from "../helpers/employmentHelper"
+} from "../helpers/guarantorHelper"
 import { guarantorRecords,guarantorSchema } from "../validators/guarantor.Schema";
 import { guarantor } from "@prisma/client";
 
@@ -16,7 +16,7 @@ export const saveGuarantorRecords = async(req: Request, res: Response, next: Nex
     try{
         const guarantorData  = req.body  satisfies guarantorRecords
         const records = await saveRecords(guarantorData)
-        res.status(HttpStatus.CREATED).json(records );
+    res.status(HttpStatus.CREATED).json({"message":"record saved successfully",records });
 
     }catch (error) {
     const err = error as ErrorResponse;
@@ -66,7 +66,7 @@ export const getGuarantorRecordsById = async(req: Request, res: Response, next: 
 export const updateGuarantorRecords = async(req: Request, res: Response, next: NextFunction)=>{
     try{
         const { id } = req.params
-        const { data } = req.body
+        const  data = req.body
         const records = await updateRecords(id, data)
         res.status(HttpStatus.OK).json({message: "Guarantor Records updated successfully", records})
 
@@ -86,7 +86,7 @@ export const deleteGuarantorRecords  = async(req: Request, res: Response, next: 
     try {
         const { id } = req.params
         const records = await deleteRecords(id)
-        res.status(HttpStatus.OK).json({message: "Guarantor records deleted successfully", records})
+        res.status(HttpStatus.OK).json({message: "Guarantor records deleted successfully"})
         
     } catch (error) {
         const err = error as ErrorResponse;

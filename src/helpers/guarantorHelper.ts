@@ -28,12 +28,13 @@ export const saveRecords = async (guarandatorData: guarantor) => {
       }
     }
 
-    const guarantor = await prisma.guarantor.create({
+    const Guarantor = await prisma.guarantor.create({
       data: {
         ...restOfguarandatorData,
         person: personId ? { connect: { id: personId } } : undefined, // Only connect if personId is not null
       },
     });
+    return Guarantor as guarantor;
   } catch (error) {
     const err = error as ErrorResponse;
     throw new HttpException(
@@ -80,25 +81,29 @@ export const getRecordsById = async (id: string) => {
   }
 };
 
-export const updateRecords = async (id: string, data: guarantorRecords) => {
+export const updateRecords = async (id: string, guarandatorData: guarantor) => {
   try {
-    const guarantor = await prisma.guarantor.update({
-      where: {
-        id: id,
-      },
-      data: {
-        fullname: data.fullname,
-        address: data.address,
-        telephone: data.telephone,
-        relationship: data.relationship,
-        person: {
-          connect: {
-            id: data.person,
-          },
+    const { personId, ...restGuarandatorData } = guarandatorData;
+
+    // Check if the person exists only if personId is provided and not null
+    if (personId) {
+      const personExists = await prisma.person.findUnique({
+        where: { id: personId },
+      });
+      if (!personExists) {
+        throw new HttpException(HttpStatus.NOT_FOUND, "Person not found.");
+      }
+      const guarantor = await prisma.guarantor.update({
+        where: {
+          id: id,
         },
-      },
-    });
-    return guarantor;
+        data: {
+          ...restGuarandatorData,
+          person: personId ? { connect: { id: personId } } : undefined, // Only connect if personId is not null
+        },
+      });
+      return guarantor;
+    }
   } catch (error) {
     const err = error as ErrorResponse;
     throw new HttpException(
@@ -107,7 +112,6 @@ export const updateRecords = async (id: string, data: guarantorRecords) => {
     );
   }
 };
-
 export const deleteRecords = async (id: string) => {
   try {
     const guarantor = await prisma.guarantor.delete({
