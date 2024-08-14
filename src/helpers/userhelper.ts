@@ -16,6 +16,9 @@ interface UserData {
   createdAt?: Date;
   updatedAt?: Date;
 }
+interface UserWithoutPassword extends Omit<UserData, "password"> {
+  password?: string;
+}
 
 export const createUser = async (userData: UserRequestDto) => {
   const validateUser = UserSchema.safeParse(userData);
@@ -26,7 +29,7 @@ export const createUser = async (userData: UserRequestDto) => {
     throw new HttpException(HttpStatus.BAD_REQUEST, errors.join(". "));
   }
 
-  const { email, fullName, password, company } = userData;
+  const { email } = userData;
 
   const findUser = await prisma.user.findUnique({ where: { email } });
   if (findUser) {
@@ -116,8 +119,11 @@ export const deleteUser = async (userId: string) => {
 
 export const getUserById = async (id: string) => {
   try {
-    const user = await prisma.user.findUnique({ where: { id } });
-    return user as UserData | null;
+    const user = (await prisma.user.findUnique({
+      where: { id },
+    })) as UserWithoutPassword | null;
+    delete user?.password;
+    return user;
   } catch (error) {
     const err = error as ErrorResponse;
     throw new HttpException(err.status || HttpStatus.BAD_REQUEST, err.message);

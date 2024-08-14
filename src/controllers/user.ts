@@ -111,6 +111,7 @@ export const getUserProfile = async (
   if (token) {
     const decoded = jwtDecode(token) as UserPayload;
     const user = await userHelper.getUserById(decoded?.id);
+
     if (user) {
       res.status(HttpStatus.OK).json({ user });
     } else {
