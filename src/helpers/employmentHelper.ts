@@ -1,8 +1,10 @@
+import HttpException from "../utils/http-error";
+import { HttpStatus } from "../utils/http-status";
 import prisma from "../utils/prisma";
-import { employmentSchema, employmentRecords } from "../validators/emploment.Schema";
+import { employmentSchema, employmentRecordsDto } from "../validators/employment.Schema";
 
-export const saveRecords = async(data: employmentRecords)=>{
-    const validateRecords = employmentSchema.safeParse(data) 
+export const saveRecords = async(data: employmentRecordsDto)=>{
+    const validateRecords = employmentSchema.safeParse(data)
     if(validateRecords.success){
         const records = await prisma.employment.create({
             data: {
@@ -14,15 +16,21 @@ export const saveRecords = async(data: employmentRecords)=>{
                 previousEmploymentDetails: validateRecords.data.previousEmploymentDetails,
                 person: {
                     connect: {
-                        id: validateRecords.data.person
+                        id: validateRecords.data.personId
                     }
                 }
             }
         })
         return records
     }
+    else if ("error" in validateRecords) {
+        const errors = validateRecords.error.issues.map(
+          ({ message, path }) => `${path}: ${message}`
+        );
     
-}
+        throw new HttpException(HttpStatus.BAD_REQUEST, errors.join("."));
+      }
+    };
 
 
 export const getRecords = async()=>{
@@ -47,7 +55,7 @@ export const getRecordsById = async(id: string)=>{
     return records
 }
 
-export const updateRecords = async(id: string, data: employmentRecords )=>{
+export const updateRecords = async(id: string, data: employmentRecordsDto )=>{
     const validateRecords = employmentSchema.safeParse(data) 
     if(validateRecords.success){
         const records = await prisma.employment.update({
@@ -63,7 +71,7 @@ export const updateRecords = async(id: string, data: employmentRecords )=>{
                 previousEmploymentDetails: validateRecords.data.previousEmploymentDetails,
                 person: {
                     connect: {
-                        id: validateRecords.data.person
+                        id: validateRecords.data.personId
                     }
                 }
             }
