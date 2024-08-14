@@ -7,9 +7,16 @@ import {
   getDocumentById,
   getDocuments,
 } from "../controllers/documentController";
+import upload from "../utils/multer";
+import { validatePayload } from "../middleware/validate-payload";
 
 const documentRouter = Router();
-documentRouter.post("/add", addDocument);
+documentRouter.post(
+  "/add",
+  upload.single("document"),
+  validatePayload("documents"),
+  addDocument
+);
 documentRouter.get("/", getDocuments);
 documentRouter.get("/:id", getDocumentById);
 documentRouter.put("/update/:id", updateDocument);

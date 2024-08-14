@@ -23,7 +23,7 @@ appRouter.use("/users", userRouter);
 appRouter.use("/documents", documentRouter);
 appRouter.use("/loan", loanRouter);
 appRouter.use("/credithistory", creditHistoryRouter);
-appRouter.use("guarantor", guarantorRoute);
+appRouter.use("/guarantor", guarantorRoute);
 appRouter.use("/employment", employmentRouter)
 appRouter.use("/publicrecord", publicRecordRouter);
 appRouter.use("/persons", personRoute);

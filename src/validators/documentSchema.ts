@@ -13,14 +13,9 @@ const DocumentType = z.enum([
 ]);
 
 export const DocumentSchema = z.object({
-  id: z.string({ required_error: "ID is required" }).uuid("Invalid UUID format"),
+
   type: DocumentType,
-  documentUrl: z
-    .string({ required_error: "Document URL is required" })
-    .url("Invalid URL format"),
-  documentKey: z
-    .string({ required_error: "Document key is required" })
-    .min(1, "Document key cannot be empty"),
+
   personId: z.string().uuid("Invalid UUID format").optional(),
   person: z
     .object({

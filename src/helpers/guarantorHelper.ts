@@ -1,78 +1,130 @@
+import { guarantor } from "@prisma/client";
+import HttpException from "../utils/http-error";
+import { HttpStatus } from "../utils/http-status";
 import prisma from "../utils/prisma";
-import { guarantorSchema, guarantorRecords } from "../validators/guarantor.Schema";
+import {
+  guarantorSchema,
+  guarantorRecords,
+} from "../validators/guarantor.Schema";
+import { ErrorResponse } from "../utils/types";
 
-export const saveRecords = async(data: guarantorRecords)=>{
-    const validateRecords = guarantorSchema.safeParse(data) 
-    if(validateRecords.success){
-        const guarantor = await prisma.guarantor.create({
-            data: {
-                fullname: validateRecords.data.fullname,
-                address: validateRecords.data.address,
-                telephone: validateRecords.data.telephone,
-                relationship: validateRecords.data.relationship,
-                person: {
-                    connect: {
-                        id: validateRecords.data.person
-                    }
-                }
-            }
-        })
-        return guarantor
+export const saveRecords = async (guarandatorData: guarantor) => {
+  try {
+    const validateGuarantor = guarantorSchema.safeParse(guarandatorData);
+    if (!validateGuarantor.success) {
+      const errors = validateGuarantor.error.issues.map(
+        ({ message, path }) => `${path.join(".")}: ${message}`
+      );
+      throw new HttpException(HttpStatus.BAD_REQUEST, errors.join(". "));
     }
-    
-}
+    const { personId, ...restOfguarandatorData } = guarandatorData;
 
+    if (personId) {
+      const personExists = await prisma.person.findUnique({
+        where: { id: personId },
+      });
+      if (!personExists) {
+        throw new HttpException(HttpStatus.NOT_FOUND, "Person not found.");
+      }
+    }
 
-export const getRecords = async()=>{
+    const Guarantor = await prisma.guarantor.create({
+      data: {
+        ...restOfguarandatorData,
+        person: personId ? { connect: { id: personId } } : undefined, // Only connect if personId is not null
+      },
+    });
+    return Guarantor as guarantor;
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(
+      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      err.message
+    );
+  }
+};
+
+export const getRecords = async () => {
+  try {
     const guarantor = await prisma.guarantor.findMany({
-        include: {
-            person: true
-        }
-    })
-    return guarantor
-}
+      include: {
+        person: true,
+      },
+    });
+    return guarantor;
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(
+      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      err.message
+    );
+  }
+};
 
-
-export const getRecordsById = async(id: string)=>{
+export const getRecordsById = async (id: string) => {
+  try {
     const guarantor = await prisma.guarantor.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        person: true,
+      },
+    });
+    return guarantor;
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(
+      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      err.message
+    );
+  }
+};
+
+export const updateRecords = async (id: string, guarandatorData: guarantor) => {
+  try {
+    const { personId, ...restGuarandatorData } = guarandatorData;
+
+    // Check if the person exists only if personId is provided and not null
+    if (personId) {
+      const personExists = await prisma.person.findUnique({
+        where: { id: personId },
+      });
+      if (!personExists) {
+        throw new HttpException(HttpStatus.NOT_FOUND, "Person not found.");
+      }
+      const guarantor = await prisma.guarantor.update({
         where: {
-            id
+          id: id,
         },
-        include: {
-            person: true
-        }
-    })
-    return guarantor
-}
-
-export const updateRecords = async(id: string, data: guarantorRecords )=>{
-    const validateRecords = guarantorSchema.safeParse(data) 
-    if(validateRecords.success){
-        const guarantor = await prisma.guarantor.update({
-            where: {
-                id: id
-            },
-            data: {
-                fullname: validateRecords.data.fullname,
-                address: validateRecords.data.address,
-                telephone: validateRecords.data.telephone,
-                relationship: validateRecords.data.relationship,
-                person: {
-                    connect: {
-                        id: validateRecords.data.person
-                    }
-                }
-            }
-        })
-        return guarantor
+        data: {
+          ...restGuarandatorData,
+          person: personId ? { connect: { id: personId } } : undefined, // Only connect if personId is not null
+        },
+      });
+      return guarantor;
     }
-}
-
-export const deleteRecords = async(id: string )=>{
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(
+      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      err.message
+    );
+  }
+};
+export const deleteRecords = async (id: string) => {
+  try {
     const guarantor = await prisma.guarantor.delete({
-        where: {
-            id: id
-        }
-    })
-    return guarantor
-}
+      where: {
+        id: id,
+      },
+    });
+    return guarantor;
+  } catch (error) {
+    const err = error as ErrorResponse;
+    throw new HttpException(
+      err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+      err.message
+    );
+  }
+};
