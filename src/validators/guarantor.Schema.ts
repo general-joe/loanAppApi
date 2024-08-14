@@ -1,4 +1,4 @@
-import {z} from "Zod"
+import {z} from "zod"
 
 
 export const guarantorSchema = z.object({
@@ -21,7 +21,8 @@ export const guarantorSchema = z.object({
     }).min(1, "relationship is required"),
     person: z.string({
         required_error: "No person found"
-    }).optional()
+    }).optional(),
+    personId: z.string({ required_error: "Person ID is required" }).uuid("Invalid UUID format").optional()
 
 })
 

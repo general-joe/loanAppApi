@@ -5,6 +5,7 @@ import { ErrorResponse } from "../utils/types";
 import { HttpStatus } from "../utils/http-status";
 import { documents } from "@prisma/client";
 import { DocumentRequestDto } from "../validators/documentSchema";
+import cloudinary from "../utils/cloudinary";
 
 export const addDocument = async (
   req: Request,
@@ -13,10 +14,24 @@ export const addDocument = async (
 ) => {
   try {
     const documentData: documents = req.body satisfies DocumentRequestDto;
-    const newDocumnent = await documentHelper.createDocument(documentData);
-    res
-      .status(HttpStatus.OK)
-      .send({ message: "document added successfull", newDocumnent });
+    const photo = req.file ? req.file.path : undefined;
+    const picture = {
+      documentUrl: "",
+      documentKey: "",
+    };
+    if (photo) {
+      const uploaded = await cloudinary.uploader.upload(photo, {
+        folder: "document/",
+      });
+      if (uploaded) {
+        picture.documentUrl = uploaded.secure_url;
+        picture.documentKey = uploaded.public_id;
+      }
+      const newDocumnent = await documentHelper.createDocument(documentData,picture);
+      res
+        .status(HttpStatus.OK)
+        .send({ message: "document added successfully", newDocumnent });
+    }
   } catch (error) {
     const err = error as ErrorResponse;
     next(

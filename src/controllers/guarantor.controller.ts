@@ -9,13 +9,14 @@ import {
     updateRecords,
     deleteRecords
 } from "../helpers/employmentHelper"
-import { guarantorRecords } from "../validators/guarantor.Schema";
+import { guarantorRecords,guarantorSchema } from "../validators/guarantor.Schema";
+import { guarantor } from "@prisma/client";
 
 export const saveGuarantorRecords = async(req: Request, res: Response, next: NextFunction)=>{
     try{
-        const { data } = req.body satisfies guarantorRecords
-        const records = await saveRecords(data)
-        res.status(HttpStatus.CREATED).json({ records });
+        const guarantorData  = req.body  satisfies guarantorRecords
+        const records = await saveRecords(guarantorData)
+        res.status(HttpStatus.CREATED).json(records );
 
     }catch (error) {
     const err = error as ErrorResponse;
