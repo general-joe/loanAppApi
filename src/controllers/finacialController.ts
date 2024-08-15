@@ -10,6 +10,7 @@ import { HttpStatus } from "../utils/http-status";
 import HttpException from "../utils/http-error";
 import { ErrorResponse } from "../utils/types";
 import { FinancialRequestDto } from "../validators/financialSchema";
+import prisma from "../utils/prisma";
 
 export const saveFinancial = async (
   req: Request,
@@ -22,6 +23,54 @@ export const saveFinancial = async (
 
     const financial = await makeFinancial(data);
     res.status(HttpStatus.CREATED).json({ financial });
+  } catch (error) {
+    const err = error as ErrorResponse;
+    next(
+      new HttpException(
+        err.status || HttpStatus.INTERNAL_SERVER_ERROR,
+        err.message
+      )
+    );
+  }
+};
+
+export const saveBulkFinancial = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const payload = req.body;
+  try {
+    const [
+      currentFinancial,
+      currentDebt,
+      currentExpenses,
+      creditHistory,
+      publicRecords,
+    ] = await Promise.all([
+      prisma.financial.createMany({
+        data: payload.currentFinancialPayloads,
+      }),
+      prisma.currentDebt.createMany({
+        data: payload.currentDebtPayloads,
+      }),
+      prisma.expenses.createMany({
+        data: payload.currentExpensesPayloads,
+      }),
+      prisma.creditHistory.create({
+        data: payload.creditHistoryPayload,
+      }),
+      prisma.publicRecords.create({
+        data: payload.publicRecordsPayload,
+      }),
+    ]);
+    res.status(HttpStatus.CREATED).json({
+      currentFinancial,
+      currentDebt,
+      currentExpenses,
+      creditHistory,
+      publicRecords,
+    });
   } catch (error) {
     const err = error as ErrorResponse;
     next(

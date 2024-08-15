@@ -9,6 +9,10 @@ const marital = z.enum([
 ]);
 
 export const PersonSchema = z.object({
+  id: z
+    .string({ required_error: "Person ID is required" })
+    .trim()
+    .min(1, "Person ID  is required"),
   fullname: z
     .string({ required_error: "Full name is required" })
     .trim()

@@ -8,6 +8,13 @@ financialRoute.post(
   validatePayload("financial"),
   financial.saveFinancial
 );
+
+financialRoute.post(
+  "/bulk",
+  // validatePayload("financial"),
+  financial.saveBulkFinancial
+);
+
 financialRoute.get("/", financial.getAllFinancials);
 financialRoute.put("/update/:id", financial.updateFinancialById);
 financialRoute.get("/:id", financial.getSingleFinancial);

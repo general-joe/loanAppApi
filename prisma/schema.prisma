@@ -27,7 +27,8 @@ model user {
 }
 
 model person {
-  id                  String          @id @default(uuid())
+  id String @id @unique
+
   fullname            String
   dob                 DateTime
   maritalStatus       marital
