@@ -6232,14 +6232,14 @@
               "value": "String",
               "location": {
                 "start": {
-                  "offset": 3219,
+                  "offset": 3214,
                   "line": 117,
-                  "column": 26
+                  "column": 21
                 },
                 "end": {
-                  "offset": 3225,
+                  "offset": 3220,
                   "line": 117,
-                  "column": 32
+                  "column": 27
                 }
               }
             }
@@ -6254,28 +6254,28 @@
                 ],
                 "location": {
                   "start": {
+                    "offset": 3225,
+                    "line": 117,
+                    "column": 32
+                  },
+                  "end": {
                     "offset": 3228,
                     "line": 117,
                     "column": 35
-                  },
-                  "end": {
-                    "offset": 3231,
-                    "line": 117,
-                    "column": 38
                   }
                 }
               },
               "args": [],
               "location": {
                 "start": {
-                  "offset": 3227,
+                  "offset": 3224,
                   "line": 117,
-                  "column": 34
+                  "column": 31
                 },
                 "end": {
-                  "offset": 3231,
+                  "offset": 3228,
                   "line": 117,
-                  "column": 38
+                  "column": 35
                 }
               }
             },
@@ -6288,14 +6288,14 @@
                 ],
                 "location": {
                   "start": {
-                    "offset": 3232,
+                    "offset": 3229,
                     "line": 117,
-                    "column": 39
+                    "column": 36
                   },
                   "end": {
-                    "offset": 3239,
+                    "offset": 3236,
                     "line": 117,
-                    "column": 46
+                    "column": 43
                   }
                 }
               },
@@ -6309,14 +6309,14 @@
                     ],
                     "location": {
                       "start": {
-                        "offset": 3240,
+                        "offset": 3237,
                         "line": 117,
-                        "column": 47
+                        "column": 44
                       },
                       "end": {
-                        "offset": 3244,
+                        "offset": 3241,
                         "line": 117,
-                        "column": 51
+                        "column": 48
                       }
                     }
                   },
@@ -6325,14 +6325,14 @@
               ],
               "location": {
                 "start": {
-                  "offset": 3231,
+                  "offset": 3228,
                   "line": 117,
-                  "column": 38
+                  "column": 35
                 },
                 "end": {
-                  "offset": 3247,
+                  "offset": 3244,
                   "line": 117,
-                  "column": 54
+                  "column": 51
                 }
               }
             }
@@ -6345,9 +6345,9 @@
               "column": 3
             },
             "end": {
-              "offset": 3247,
+              "offset": 3244,
               "line": 117,
-              "column": 54
+              "column": 51
             }
           }
         },
@@ -6355,17 +6355,17 @@
           "kind": "field",
           "name": {
             "kind": "name",
-            "value": "detailsOfPreviousLoans",
+            "value": "previousLoan",
             "location": {
               "start": {
-                "offset": 3250,
+                "offset": 3247,
                 "line": 118,
                 "column": 3
               },
               "end": {
-                "offset": 3272,
+                "offset": 3259,
                 "line": 118,
-                "column": 25
+                "column": 15
               }
             }
           },
@@ -6373,17 +6373,112 @@
             "kind": "typeId",
             "name": {
               "kind": "name",
-              "value": "String",
+              "value": "Boolean",
               "location": {
                 "start": {
-                  "offset": 3273,
+                  "offset": 3265,
                   "line": 118,
-                  "column": 26
+                  "column": 21
                 },
                 "end": {
-                  "offset": 3279,
+                  "offset": 3272,
                   "line": 118,
-                  "column": 32
+                  "column": 28
+                }
+              }
+            }
+          },
+          "attributes": [
+            {
+              "kind": "fieldAttribute",
+              "path": {
+                "kind": "path",
+                "value": [
+                  "default"
+                ],
+                "location": {
+                  "start": {
+                    "offset": 3276,
+                    "line": 118,
+                    "column": 32
+                  },
+                  "end": {
+                    "offset": 3283,
+                    "line": 118,
+                    "column": 39
+                  }
+                }
+              },
+              "args": [
+                {
+                  "kind": "literal",
+                  "value": false
+                }
+              ],
+              "location": {
+                "start": {
+                  "offset": 3275,
+                  "line": 118,
+                  "column": 31
+                },
+                "end": {
+                  "offset": 3290,
+                  "line": 118,
+                  "column": 46
+                }
+              }
+            }
+          ],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 3247,
+              "line": 118,
+              "column": 3
+            },
+            "end": {
+              "offset": 3290,
+              "line": 118,
+              "column": 46
+            }
+          }
+        },
+        {
+          "kind": "field",
+          "name": {
+            "kind": "name",
+            "value": "repaymentSchedule",
+            "location": {
+              "start": {
+                "offset": 3293,
+                "line": 119,
+                "column": 3
+              },
+              "end": {
+                "offset": 3310,
+                "line": 119,
+                "column": 20
+              }
+            }
+          },
+          "type": {
+            "kind": "optional",
+            "type": {
+              "kind": "typeId",
+              "name": {
+                "kind": "name",
+                "value": "schedule",
+                "location": {
+                  "start": {
+                    "offset": 3311,
+                    "line": 119,
+                    "column": 21
+                  },
+                  "end": {
+                    "offset": 3319,
+                    "line": 119,
+                    "column": 29
+                  }
                 }
               }
             }
@@ -6392,66 +6487,14 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3250,
-              "line": 118,
-              "column": 3
-            },
-            "end": {
-              "offset": 3279,
-              "line": 118,
-              "column": 32
-            }
-          }
-        },
-        {
-          "kind": "field",
-          "name": {
-            "kind": "name",
-            "value": "repaymentHistory",
-            "location": {
-              "start": {
-                "offset": 3282,
-                "line": 119,
-                "column": 3
-              },
-              "end": {
-                "offset": 3298,
-                "line": 119,
-                "column": 19
-              }
-            }
-          },
-          "type": {
-            "kind": "typeId",
-            "name": {
-              "kind": "name",
-              "value": "String",
-              "location": {
-                "start": {
-                  "offset": 3305,
-                  "line": 119,
-                  "column": 26
-                },
-                "end": {
-                  "offset": 3311,
-                  "line": 119,
-                  "column": 32
-                }
-              }
-            }
-          },
-          "attributes": [],
-          "comment": null,
-          "location": {
-            "start": {
-              "offset": 3282,
+              "offset": 3293,
               "line": 119,
               "column": 3
             },
             "end": {
-              "offset": 3311,
+              "offset": 3320,
               "line": 119,
-              "column": 32
+              "column": 30
             }
           }
         },
@@ -6462,12 +6505,12 @@
             "value": "latePayments",
             "location": {
               "start": {
-                "offset": 3314,
+                "offset": 3323,
                 "line": 120,
                 "column": 3
               },
               "end": {
-                "offset": 3326,
+                "offset": 3335,
                 "line": 120,
                 "column": 15
               }
@@ -6477,33 +6520,73 @@
             "kind": "typeId",
             "name": {
               "kind": "name",
-              "value": "String",
+              "value": "Boolean",
               "location": {
                 "start": {
-                  "offset": 3337,
+                  "offset": 3341,
                   "line": 120,
-                  "column": 26
+                  "column": 21
                 },
                 "end": {
-                  "offset": 3343,
+                  "offset": 3348,
                   "line": 120,
-                  "column": 32
+                  "column": 28
                 }
               }
             }
           },
-          "attributes": [],
+          "attributes": [
+            {
+              "kind": "fieldAttribute",
+              "path": {
+                "kind": "path",
+                "value": [
+                  "default"
+                ],
+                "location": {
+                  "start": {
+                    "offset": 3352,
+                    "line": 120,
+                    "column": 32
+                  },
+                  "end": {
+                    "offset": 3359,
+                    "line": 120,
+                    "column": 39
+                  }
+                }
+              },
+              "args": [
+                {
+                  "kind": "literal",
+                  "value": false
+                }
+              ],
+              "location": {
+                "start": {
+                  "offset": 3351,
+                  "line": 120,
+                  "column": 31
+                },
+                "end": {
+                  "offset": 3366,
+                  "line": 120,
+                  "column": 46
+                }
+              }
+            }
+          ],
           "comment": null,
           "location": {
             "start": {
-              "offset": 3314,
+              "offset": 3323,
               "line": 120,
               "column": 3
             },
             "end": {
-              "offset": 3343,
+              "offset": 3366,
               "line": 120,
-              "column": 32
+              "column": 46
             }
           }
         },
@@ -6514,12 +6597,12 @@
             "value": "person",
             "location": {
               "start": {
-                "offset": 3346,
+                "offset": 3369,
                 "line": 121,
                 "column": 3
               },
               "end": {
-                "offset": 3352,
+                "offset": 3375,
                 "line": 121,
                 "column": 9
               }
@@ -6534,14 +6617,14 @@
                 "value": "person",
                 "location": {
                   "start": {
-                    "offset": 3369,
+                    "offset": 3387,
                     "line": 121,
-                    "column": 26
+                    "column": 21
                   },
                   "end": {
-                    "offset": 3375,
+                    "offset": 3393,
                     "line": 121,
-                    "column": 32
+                    "column": 27
                   }
                 }
               }
@@ -6557,14 +6640,14 @@
                 ],
                 "location": {
                   "start": {
-                    "offset": 3378,
+                    "offset": 3398,
                     "line": 121,
-                    "column": 35
+                    "column": 32
                   },
                   "end": {
-                    "offset": 3386,
+                    "offset": 3406,
                     "line": 121,
-                    "column": 43
+                    "column": 40
                   }
                 }
               },
@@ -6576,14 +6659,14 @@
                     "value": "fields",
                     "location": {
                       "start": {
-                        "offset": 3387,
+                        "offset": 3407,
                         "line": 121,
-                        "column": 44
+                        "column": 41
                       },
                       "end": {
-                        "offset": 3393,
+                        "offset": 3413,
                         "line": 121,
-                        "column": 50
+                        "column": 47
                       }
                     }
                   },
@@ -6597,14 +6680,14 @@
                         ],
                         "location": {
                           "start": {
-                            "offset": 3396,
+                            "offset": 3416,
                             "line": 121,
-                            "column": 53
+                            "column": 50
                           },
                           "end": {
-                            "offset": 3404,
+                            "offset": 3424,
                             "line": 121,
-                            "column": 61
+                            "column": 58
                           }
                         }
                       }
@@ -6618,14 +6701,14 @@
                     "value": "references",
                     "location": {
                       "start": {
-                        "offset": 3407,
+                        "offset": 3427,
                         "line": 121,
-                        "column": 64
+                        "column": 61
                       },
                       "end": {
-                        "offset": 3417,
+                        "offset": 3437,
                         "line": 121,
-                        "column": 74
+                        "column": 71
                       }
                     }
                   },
@@ -6639,14 +6722,14 @@
                         ],
                         "location": {
                           "start": {
-                            "offset": 3420,
+                            "offset": 3440,
                             "line": 121,
-                            "column": 77
+                            "column": 74
                           },
                           "end": {
-                            "offset": 3422,
+                            "offset": 3442,
                             "line": 121,
-                            "column": 79
+                            "column": 76
                           }
                         }
                       }
@@ -6656,14 +6739,14 @@
               ],
               "location": {
                 "start": {
-                  "offset": 3377,
+                  "offset": 3397,
                   "line": 121,
-                  "column": 34
+                  "column": 31
                 },
                 "end": {
-                  "offset": 3424,
+                  "offset": 3444,
                   "line": 121,
-                  "column": 81
+                  "column": 78
                 }
               }
             }
@@ -6671,14 +6754,14 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3346,
+              "offset": 3369,
               "line": 121,
               "column": 3
             },
             "end": {
-              "offset": 3424,
+              "offset": 3444,
               "line": 121,
-              "column": 81
+              "column": 78
             }
           }
         },
@@ -6689,12 +6772,12 @@
             "value": "personId",
             "location": {
               "start": {
-                "offset": 3427,
+                "offset": 3447,
                 "line": 122,
                 "column": 3
               },
               "end": {
-                "offset": 3435,
+                "offset": 3455,
                 "line": 122,
                 "column": 11
               }
@@ -6709,14 +6792,14 @@
                 "value": "String",
                 "location": {
                   "start": {
-                    "offset": 3450,
+                    "offset": 3465,
                     "line": 122,
-                    "column": 26
+                    "column": 21
                   },
                   "end": {
-                    "offset": 3456,
+                    "offset": 3471,
                     "line": 122,
-                    "column": 32
+                    "column": 27
                   }
                 }
               }
@@ -6726,14 +6809,14 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3427,
+              "offset": 3447,
               "line": 122,
               "column": 3
             },
             "end": {
-              "offset": 3457,
+              "offset": 3472,
               "line": 122,
-              "column": 33
+              "column": 28
             }
           }
         }
@@ -6745,8 +6828,206 @@
           "column": 1
         },
         "end": {
-          "offset": 3459,
+          "offset": 3474,
           "line": 123,
+          "column": 2
+        }
+      }
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "kind": "name",
+        "value": "schedule",
+        "location": {
+          "start": {
+            "offset": 3481,
+            "line": 125,
+            "column": 6
+          },
+          "end": {
+            "offset": 3489,
+            "line": 125,
+            "column": 14
+          }
+        }
+      },
+      "members": [
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "FULL",
+            "location": {
+              "start": {
+                "offset": 3494,
+                "line": 126,
+                "column": 3
+              },
+              "end": {
+                "offset": 3498,
+                "line": 126,
+                "column": 7
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 3494,
+              "line": 126,
+              "column": 3
+            },
+            "end": {
+              "offset": 3498,
+              "line": 126,
+              "column": 7
+            }
+          }
+        },
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "MONTHLY",
+            "location": {
+              "start": {
+                "offset": 3501,
+                "line": 127,
+                "column": 3
+              },
+              "end": {
+                "offset": 3508,
+                "line": 127,
+                "column": 10
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 3501,
+              "line": 127,
+              "column": 3
+            },
+            "end": {
+              "offset": 3508,
+              "line": 127,
+              "column": 10
+            }
+          }
+        },
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "WEEKLY",
+            "location": {
+              "start": {
+                "offset": 3511,
+                "line": 128,
+                "column": 3
+              },
+              "end": {
+                "offset": 3517,
+                "line": 128,
+                "column": 9
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 3511,
+              "line": 128,
+              "column": 3
+            },
+            "end": {
+              "offset": 3517,
+              "line": 128,
+              "column": 9
+            }
+          }
+        },
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "DAILY",
+            "location": {
+              "start": {
+                "offset": 3520,
+                "line": 129,
+                "column": 3
+              },
+              "end": {
+                "offset": 3525,
+                "line": 129,
+                "column": 8
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 3520,
+              "line": 129,
+              "column": 3
+            },
+            "end": {
+              "offset": 3525,
+              "line": 129,
+              "column": 8
+            }
+          }
+        },
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "YEARLY",
+            "location": {
+              "start": {
+                "offset": 3528,
+                "line": 130,
+                "column": 3
+              },
+              "end": {
+                "offset": 3534,
+                "line": 130,
+                "column": 9
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 3528,
+              "line": 130,
+              "column": 3
+            },
+            "end": {
+              "offset": 3534,
+              "line": 130,
+              "column": 9
+            }
+          }
+        }
+      ],
+      "location": {
+        "start": {
+          "offset": 3476,
+          "line": 125,
+          "column": 1
+        },
+        "end": {
+          "offset": 3536,
+          "line": 131,
           "column": 2
         }
       }
@@ -6758,13 +7039,13 @@
         "value": "publicRecords",
         "location": {
           "start": {
-            "offset": 3467,
-            "line": 125,
+            "offset": 3544,
+            "line": 133,
             "column": 7
           },
           "end": {
-            "offset": 3480,
-            "line": 125,
+            "offset": 3557,
+            "line": 133,
             "column": 20
           }
         }
@@ -6777,13 +7058,13 @@
             "value": "id",
             "location": {
               "start": {
-                "offset": 3485,
-                "line": 126,
+                "offset": 3562,
+                "line": 134,
                 "column": 3
               },
               "end": {
-                "offset": 3487,
-                "line": 126,
+                "offset": 3564,
+                "line": 134,
                 "column": 5
               }
             }
@@ -6795,13 +7076,13 @@
               "value": "String",
               "location": {
                 "start": {
-                  "offset": 3500,
-                  "line": 126,
+                  "offset": 3577,
+                  "line": 134,
                   "column": 18
                 },
                 "end": {
-                  "offset": 3506,
-                  "line": 126,
+                  "offset": 3583,
+                  "line": 134,
                   "column": 24
                 }
               }
@@ -6817,13 +7098,13 @@
                 ],
                 "location": {
                   "start": {
-                    "offset": 3509,
-                    "line": 126,
+                    "offset": 3586,
+                    "line": 134,
                     "column": 27
                   },
                   "end": {
-                    "offset": 3512,
-                    "line": 126,
+                    "offset": 3589,
+                    "line": 134,
                     "column": 30
                   }
                 }
@@ -6831,13 +7112,13 @@
               "args": [],
               "location": {
                 "start": {
-                  "offset": 3508,
-                  "line": 126,
+                  "offset": 3585,
+                  "line": 134,
                   "column": 26
                 },
                 "end": {
-                  "offset": 3512,
-                  "line": 126,
+                  "offset": 3589,
+                  "line": 134,
                   "column": 30
                 }
               }
@@ -6851,13 +7132,13 @@
                 ],
                 "location": {
                   "start": {
-                    "offset": 3513,
-                    "line": 126,
+                    "offset": 3590,
+                    "line": 134,
                     "column": 31
                   },
                   "end": {
-                    "offset": 3520,
-                    "line": 126,
+                    "offset": 3597,
+                    "line": 134,
                     "column": 38
                   }
                 }
@@ -6872,13 +7153,13 @@
                     ],
                     "location": {
                       "start": {
-                        "offset": 3521,
-                        "line": 126,
+                        "offset": 3598,
+                        "line": 134,
                         "column": 39
                       },
                       "end": {
-                        "offset": 3525,
-                        "line": 126,
+                        "offset": 3602,
+                        "line": 134,
                         "column": 43
                       }
                     }
@@ -6888,13 +7169,13 @@
               ],
               "location": {
                 "start": {
-                  "offset": 3512,
-                  "line": 126,
+                  "offset": 3589,
+                  "line": 134,
                   "column": 30
                 },
                 "end": {
-                  "offset": 3528,
-                  "line": 126,
+                  "offset": 3605,
+                  "line": 134,
                   "column": 46
                 }
               }
@@ -6903,13 +7184,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3485,
-              "line": 126,
+              "offset": 3562,
+              "line": 134,
               "column": 3
             },
             "end": {
-              "offset": 3528,
-              "line": 126,
+              "offset": 3605,
+              "line": 134,
               "column": 46
             }
           }
@@ -6921,13 +7202,13 @@
             "value": "bankruptcies",
             "location": {
               "start": {
-                "offset": 3531,
-                "line": 127,
+                "offset": 3608,
+                "line": 135,
                 "column": 3
               },
               "end": {
-                "offset": 3543,
-                "line": 127,
+                "offset": 3620,
+                "line": 135,
                 "column": 15
               }
             }
@@ -6939,13 +7220,13 @@
               "value": "Boolean",
               "location": {
                 "start": {
-                  "offset": 3546,
-                  "line": 127,
+                  "offset": 3623,
+                  "line": 135,
                   "column": 18
                 },
                 "end": {
-                  "offset": 3553,
-                  "line": 127,
+                  "offset": 3630,
+                  "line": 135,
                   "column": 25
                 }
               }
@@ -6955,13 +7236,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3531,
-              "line": 127,
+              "offset": 3608,
+              "line": 135,
               "column": 3
             },
             "end": {
-              "offset": 3553,
-              "line": 127,
+              "offset": 3630,
+              "line": 135,
               "column": 25
             }
           }
@@ -6973,13 +7254,13 @@
             "value": "criminalRecord",
             "location": {
               "start": {
-                "offset": 3556,
-                "line": 128,
+                "offset": 3633,
+                "line": 136,
                 "column": 3
               },
               "end": {
-                "offset": 3570,
-                "line": 128,
+                "offset": 3647,
+                "line": 136,
                 "column": 17
               }
             }
@@ -6991,13 +7272,13 @@
               "value": "Boolean",
               "location": {
                 "start": {
-                  "offset": 3571,
-                  "line": 128,
+                  "offset": 3648,
+                  "line": 136,
                   "column": 18
                 },
                 "end": {
-                  "offset": 3578,
-                  "line": 128,
+                  "offset": 3655,
+                  "line": 136,
                   "column": 25
                 }
               }
@@ -7007,13 +7288,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3556,
-              "line": 128,
+              "offset": 3633,
+              "line": 136,
               "column": 3
             },
             "end": {
-              "offset": 3578,
-              "line": 128,
+              "offset": 3655,
+              "line": 136,
               "column": 25
             }
           }
@@ -7025,13 +7306,13 @@
             "value": "nationality",
             "location": {
               "start": {
-                "offset": 3581,
-                "line": 129,
+                "offset": 3658,
+                "line": 137,
                 "column": 3
               },
               "end": {
-                "offset": 3592,
-                "line": 129,
+                "offset": 3669,
+                "line": 137,
                 "column": 14
               }
             }
@@ -7043,13 +7324,13 @@
               "value": "String",
               "location": {
                 "start": {
-                  "offset": 3596,
-                  "line": 129,
+                  "offset": 3673,
+                  "line": 137,
                   "column": 18
                 },
                 "end": {
-                  "offset": 3602,
-                  "line": 129,
+                  "offset": 3679,
+                  "line": 137,
                   "column": 24
                 }
               }
@@ -7059,13 +7340,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3581,
-              "line": 129,
+              "offset": 3658,
+              "line": 137,
               "column": 3
             },
             "end": {
-              "offset": 3602,
-              "line": 129,
+              "offset": 3679,
+              "line": 137,
               "column": 24
             }
           }
@@ -7077,13 +7358,13 @@
             "value": "person",
             "location": {
               "start": {
-                "offset": 3605,
-                "line": 130,
+                "offset": 3682,
+                "line": 138,
                 "column": 3
               },
               "end": {
-                "offset": 3611,
-                "line": 130,
+                "offset": 3688,
+                "line": 138,
                 "column": 9
               }
             }
@@ -7097,13 +7378,13 @@
                 "value": "person",
                 "location": {
                   "start": {
-                    "offset": 3620,
-                    "line": 130,
+                    "offset": 3697,
+                    "line": 138,
                     "column": 18
                   },
                   "end": {
-                    "offset": 3626,
-                    "line": 130,
+                    "offset": 3703,
+                    "line": 138,
                     "column": 24
                   }
                 }
@@ -7120,13 +7401,13 @@
                 ],
                 "location": {
                   "start": {
-                    "offset": 3629,
-                    "line": 130,
+                    "offset": 3706,
+                    "line": 138,
                     "column": 27
                   },
                   "end": {
-                    "offset": 3637,
-                    "line": 130,
+                    "offset": 3714,
+                    "line": 138,
                     "column": 35
                   }
                 }
@@ -7139,13 +7420,13 @@
                     "value": "fields",
                     "location": {
                       "start": {
-                        "offset": 3638,
-                        "line": 130,
+                        "offset": 3715,
+                        "line": 138,
                         "column": 36
                       },
                       "end": {
-                        "offset": 3644,
-                        "line": 130,
+                        "offset": 3721,
+                        "line": 138,
                         "column": 42
                       }
                     }
@@ -7160,13 +7441,13 @@
                         ],
                         "location": {
                           "start": {
-                            "offset": 3647,
-                            "line": 130,
+                            "offset": 3724,
+                            "line": 138,
                             "column": 45
                           },
                           "end": {
-                            "offset": 3655,
-                            "line": 130,
+                            "offset": 3732,
+                            "line": 138,
                             "column": 53
                           }
                         }
@@ -7181,13 +7462,13 @@
                     "value": "references",
                     "location": {
                       "start": {
-                        "offset": 3658,
-                        "line": 130,
+                        "offset": 3735,
+                        "line": 138,
                         "column": 56
                       },
                       "end": {
-                        "offset": 3668,
-                        "line": 130,
+                        "offset": 3745,
+                        "line": 138,
                         "column": 66
                       }
                     }
@@ -7202,13 +7483,13 @@
                         ],
                         "location": {
                           "start": {
-                            "offset": 3671,
-                            "line": 130,
+                            "offset": 3748,
+                            "line": 138,
                             "column": 69
                           },
                           "end": {
-                            "offset": 3673,
-                            "line": 130,
+                            "offset": 3750,
+                            "line": 138,
                             "column": 71
                           }
                         }
@@ -7219,13 +7500,13 @@
               ],
               "location": {
                 "start": {
-                  "offset": 3628,
-                  "line": 130,
+                  "offset": 3705,
+                  "line": 138,
                   "column": 26
                 },
                 "end": {
-                  "offset": 3675,
-                  "line": 130,
+                  "offset": 3752,
+                  "line": 138,
                   "column": 73
                 }
               }
@@ -7234,13 +7515,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3605,
-              "line": 130,
+              "offset": 3682,
+              "line": 138,
               "column": 3
             },
             "end": {
-              "offset": 3675,
-              "line": 130,
+              "offset": 3752,
+              "line": 138,
               "column": 73
             }
           }
@@ -7252,13 +7533,13 @@
             "value": "personId",
             "location": {
               "start": {
-                "offset": 3678,
-                "line": 131,
+                "offset": 3755,
+                "line": 139,
                 "column": 3
               },
               "end": {
-                "offset": 3686,
-                "line": 131,
+                "offset": 3763,
+                "line": 139,
                 "column": 11
               }
             }
@@ -7272,13 +7553,13 @@
                 "value": "String",
                 "location": {
                   "start": {
-                    "offset": 3693,
-                    "line": 131,
+                    "offset": 3770,
+                    "line": 139,
                     "column": 18
                   },
                   "end": {
-                    "offset": 3699,
-                    "line": 131,
+                    "offset": 3776,
+                    "line": 139,
                     "column": 24
                   }
                 }
@@ -7289,13 +7570,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3678,
-              "line": 131,
+              "offset": 3755,
+              "line": 139,
               "column": 3
             },
             "end": {
-              "offset": 3700,
-              "line": 131,
+              "offset": 3777,
+              "line": 139,
               "column": 25
             }
           }
@@ -7303,13 +7584,13 @@
       ],
       "location": {
         "start": {
-          "offset": 3461,
-          "line": 125,
+          "offset": 3538,
+          "line": 133,
           "column": 1
         },
         "end": {
-          "offset": 3702,
-          "line": 132,
+          "offset": 3779,
+          "line": 140,
           "column": 2
         }
       }
@@ -7321,13 +7602,13 @@
         "value": "loan",
         "location": {
           "start": {
-            "offset": 3710,
-            "line": 134,
+            "offset": 3787,
+            "line": 142,
             "column": 7
           },
           "end": {
-            "offset": 3714,
-            "line": 134,
+            "offset": 3791,
+            "line": 142,
             "column": 11
           }
         }
@@ -7340,13 +7621,13 @@
             "value": "id",
             "location": {
               "start": {
-                "offset": 3719,
-                "line": 135,
+                "offset": 3796,
+                "line": 143,
                 "column": 3
               },
               "end": {
-                "offset": 3721,
-                "line": 135,
+                "offset": 3798,
+                "line": 143,
                 "column": 5
               }
             }
@@ -7358,13 +7639,13 @@
               "value": "String",
               "location": {
                 "start": {
-                  "offset": 3739,
-                  "line": 135,
+                  "offset": 3816,
+                  "line": 143,
                   "column": 23
                 },
                 "end": {
-                  "offset": 3745,
-                  "line": 135,
+                  "offset": 3822,
+                  "line": 143,
                   "column": 29
                 }
               }
@@ -7380,13 +7661,13 @@
                 ],
                 "location": {
                   "start": {
-                    "offset": 3749,
-                    "line": 135,
+                    "offset": 3826,
+                    "line": 143,
                     "column": 33
                   },
                   "end": {
-                    "offset": 3752,
-                    "line": 135,
+                    "offset": 3829,
+                    "line": 143,
                     "column": 36
                   }
                 }
@@ -7394,13 +7675,13 @@
               "args": [],
               "location": {
                 "start": {
-                  "offset": 3748,
-                  "line": 135,
+                  "offset": 3825,
+                  "line": 143,
                   "column": 32
                 },
                 "end": {
-                  "offset": 3752,
-                  "line": 135,
+                  "offset": 3829,
+                  "line": 143,
                   "column": 36
                 }
               }
@@ -7414,13 +7695,13 @@
                 ],
                 "location": {
                   "start": {
-                    "offset": 3753,
-                    "line": 135,
+                    "offset": 3830,
+                    "line": 143,
                     "column": 37
                   },
                   "end": {
-                    "offset": 3760,
-                    "line": 135,
+                    "offset": 3837,
+                    "line": 143,
                     "column": 44
                   }
                 }
@@ -7435,13 +7716,13 @@
                     ],
                     "location": {
                       "start": {
-                        "offset": 3761,
-                        "line": 135,
+                        "offset": 3838,
+                        "line": 143,
                         "column": 45
                       },
                       "end": {
-                        "offset": 3765,
-                        "line": 135,
+                        "offset": 3842,
+                        "line": 143,
                         "column": 49
                       }
                     }
@@ -7451,13 +7732,13 @@
               ],
               "location": {
                 "start": {
-                  "offset": 3752,
-                  "line": 135,
+                  "offset": 3829,
+                  "line": 143,
                   "column": 36
                 },
                 "end": {
-                  "offset": 3768,
-                  "line": 135,
+                  "offset": 3845,
+                  "line": 143,
                   "column": 52
                 }
               }
@@ -7466,13 +7747,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3719,
-              "line": 135,
+              "offset": 3796,
+              "line": 143,
               "column": 3
             },
             "end": {
-              "offset": 3768,
-              "line": 135,
+              "offset": 3845,
+              "line": 143,
               "column": 52
             }
           }
@@ -7484,13 +7765,13 @@
             "value": "loanAmountRequested",
             "location": {
               "start": {
-                "offset": 3771,
-                "line": 136,
+                "offset": 3848,
+                "line": 144,
                 "column": 3
               },
               "end": {
-                "offset": 3790,
-                "line": 136,
+                "offset": 3867,
+                "line": 144,
                 "column": 22
               }
             }
@@ -7502,13 +7783,13 @@
               "value": "Float",
               "location": {
                 "start": {
-                  "offset": 3791,
-                  "line": 136,
+                  "offset": 3868,
+                  "line": 144,
                   "column": 23
                 },
                 "end": {
-                  "offset": 3796,
-                  "line": 136,
+                  "offset": 3873,
+                  "line": 144,
                   "column": 28
                 }
               }
@@ -7518,13 +7799,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3771,
-              "line": 136,
+              "offset": 3848,
+              "line": 144,
               "column": 3
             },
             "end": {
-              "offset": 3796,
-              "line": 136,
+              "offset": 3873,
+              "line": 144,
               "column": 28
             }
           }
@@ -7536,13 +7817,13 @@
             "value": "type",
             "location": {
               "start": {
-                "offset": 3799,
-                "line": 137,
+                "offset": 3876,
+                "line": 145,
                 "column": 3
               },
               "end": {
-                "offset": 3803,
-                "line": 137,
+                "offset": 3880,
+                "line": 145,
                 "column": 7
               }
             }
@@ -7554,13 +7835,13 @@
               "value": "loanType",
               "location": {
                 "start": {
-                  "offset": 3819,
-                  "line": 137,
+                  "offset": 3896,
+                  "line": 145,
                   "column": 23
                 },
                 "end": {
-                  "offset": 3827,
-                  "line": 137,
+                  "offset": 3904,
+                  "line": 145,
                   "column": 31
                 }
               }
@@ -7570,13 +7851,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3799,
-              "line": 137,
+              "offset": 3876,
+              "line": 145,
               "column": 3
             },
             "end": {
-              "offset": 3827,
-              "line": 137,
+              "offset": 3904,
+              "line": 145,
               "column": 31
             }
           }
@@ -7588,13 +7869,13 @@
             "value": "purpose",
             "location": {
               "start": {
-                "offset": 3830,
-                "line": 138,
+                "offset": 3907,
+                "line": 146,
                 "column": 3
               },
               "end": {
-                "offset": 3837,
-                "line": 138,
+                "offset": 3914,
+                "line": 146,
                 "column": 10
               }
             }
@@ -7606,13 +7887,13 @@
               "value": "String",
               "location": {
                 "start": {
-                  "offset": 3850,
-                  "line": 138,
+                  "offset": 3927,
+                  "line": 146,
                   "column": 23
                 },
                 "end": {
-                  "offset": 3856,
-                  "line": 138,
+                  "offset": 3933,
+                  "line": 146,
                   "column": 29
                 }
               }
@@ -7622,13 +7903,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3830,
-              "line": 138,
+              "offset": 3907,
+              "line": 146,
               "column": 3
             },
             "end": {
-              "offset": 3856,
-              "line": 138,
+              "offset": 3933,
+              "line": 146,
               "column": 29
             }
           }
@@ -7640,13 +7921,13 @@
             "value": "loanTerm",
             "location": {
               "start": {
-                "offset": 3859,
-                "line": 139,
+                "offset": 3936,
+                "line": 147,
                 "column": 3
               },
               "end": {
-                "offset": 3867,
-                "line": 139,
+                "offset": 3944,
+                "line": 147,
                 "column": 11
               }
             }
@@ -7658,13 +7939,13 @@
               "value": "Int",
               "location": {
                 "start": {
-                  "offset": 3879,
-                  "line": 139,
+                  "offset": 3956,
+                  "line": 147,
                   "column": 23
                 },
                 "end": {
-                  "offset": 3882,
-                  "line": 139,
+                  "offset": 3959,
+                  "line": 147,
                   "column": 26
                 }
               }
@@ -7676,26 +7957,26 @@
             "text": "in months",
             "location": {
               "start": {
-                "offset": 3883,
-                "line": 139,
+                "offset": 3960,
+                "line": 147,
                 "column": 27
               },
               "end": {
-                "offset": 3894,
-                "line": 139,
+                "offset": 3971,
+                "line": 147,
                 "column": 38
               }
             }
           },
           "location": {
             "start": {
-              "offset": 3859,
-              "line": 139,
+              "offset": 3936,
+              "line": 147,
               "column": 3
             },
             "end": {
-              "offset": 3894,
-              "line": 139,
+              "offset": 3971,
+              "line": 147,
               "column": 38
             }
           }
@@ -7707,13 +7988,13 @@
             "value": "collateral",
             "location": {
               "start": {
-                "offset": 3897,
-                "line": 140,
+                "offset": 3974,
+                "line": 148,
                 "column": 3
               },
               "end": {
-                "offset": 3907,
-                "line": 140,
+                "offset": 3984,
+                "line": 148,
                 "column": 13
               }
             }
@@ -7725,13 +8006,13 @@
               "value": "String",
               "location": {
                 "start": {
-                  "offset": 3917,
-                  "line": 140,
+                  "offset": 3994,
+                  "line": 148,
                   "column": 23
                 },
                 "end": {
-                  "offset": 3923,
-                  "line": 140,
+                  "offset": 4000,
+                  "line": 148,
                   "column": 29
                 }
               }
@@ -7741,13 +8022,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3897,
-              "line": 140,
+              "offset": 3974,
+              "line": 148,
               "column": 3
             },
             "end": {
-              "offset": 3923,
-              "line": 140,
+              "offset": 4000,
+              "line": 148,
               "column": 29
             }
           }
@@ -7759,13 +8040,13 @@
             "value": "person",
             "location": {
               "start": {
-                "offset": 3926,
-                "line": 141,
+                "offset": 4003,
+                "line": 149,
                 "column": 3
               },
               "end": {
-                "offset": 3932,
-                "line": 141,
+                "offset": 4009,
+                "line": 149,
                 "column": 9
               }
             }
@@ -7779,13 +8060,13 @@
                 "value": "person",
                 "location": {
                   "start": {
-                    "offset": 3946,
-                    "line": 141,
+                    "offset": 4023,
+                    "line": 149,
                     "column": 23
                   },
                   "end": {
-                    "offset": 3952,
-                    "line": 141,
+                    "offset": 4029,
+                    "line": 149,
                     "column": 29
                   }
                 }
@@ -7802,13 +8083,13 @@
                 ],
                 "location": {
                   "start": {
-                    "offset": 3956,
-                    "line": 141,
+                    "offset": 4033,
+                    "line": 149,
                     "column": 33
                   },
                   "end": {
-                    "offset": 3964,
-                    "line": 141,
+                    "offset": 4041,
+                    "line": 149,
                     "column": 41
                   }
                 }
@@ -7821,13 +8102,13 @@
                     "value": "fields",
                     "location": {
                       "start": {
-                        "offset": 3965,
-                        "line": 141,
+                        "offset": 4042,
+                        "line": 149,
                         "column": 42
                       },
                       "end": {
-                        "offset": 3971,
-                        "line": 141,
+                        "offset": 4048,
+                        "line": 149,
                         "column": 48
                       }
                     }
@@ -7842,13 +8123,13 @@
                         ],
                         "location": {
                           "start": {
-                            "offset": 3974,
-                            "line": 141,
+                            "offset": 4051,
+                            "line": 149,
                             "column": 51
                           },
                           "end": {
-                            "offset": 3982,
-                            "line": 141,
+                            "offset": 4059,
+                            "line": 149,
                             "column": 59
                           }
                         }
@@ -7863,13 +8144,13 @@
                     "value": "references",
                     "location": {
                       "start": {
-                        "offset": 3985,
-                        "line": 141,
+                        "offset": 4062,
+                        "line": 149,
                         "column": 62
                       },
                       "end": {
-                        "offset": 3995,
-                        "line": 141,
+                        "offset": 4072,
+                        "line": 149,
                         "column": 72
                       }
                     }
@@ -7884,13 +8165,13 @@
                         ],
                         "location": {
                           "start": {
-                            "offset": 3998,
-                            "line": 141,
+                            "offset": 4075,
+                            "line": 149,
                             "column": 75
                           },
                           "end": {
-                            "offset": 4000,
-                            "line": 141,
+                            "offset": 4077,
+                            "line": 149,
                             "column": 77
                           }
                         }
@@ -7901,13 +8182,13 @@
               ],
               "location": {
                 "start": {
-                  "offset": 3955,
-                  "line": 141,
+                  "offset": 4032,
+                  "line": 149,
                   "column": 32
                 },
                 "end": {
-                  "offset": 4002,
-                  "line": 141,
+                  "offset": 4079,
+                  "line": 149,
                   "column": 79
                 }
               }
@@ -7916,13 +8197,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 3926,
-              "line": 141,
+              "offset": 4003,
+              "line": 149,
               "column": 3
             },
             "end": {
-              "offset": 4002,
-              "line": 141,
+              "offset": 4079,
+              "line": 149,
               "column": 79
             }
           }
@@ -7934,13 +8215,13 @@
             "value": "personId",
             "location": {
               "start": {
-                "offset": 4005,
-                "line": 142,
+                "offset": 4082,
+                "line": 150,
                 "column": 3
               },
               "end": {
-                "offset": 4013,
-                "line": 142,
+                "offset": 4090,
+                "line": 150,
                 "column": 11
               }
             }
@@ -7954,13 +8235,13 @@
                 "value": "String",
                 "location": {
                   "start": {
-                    "offset": 4025,
-                    "line": 142,
+                    "offset": 4102,
+                    "line": 150,
                     "column": 23
                   },
                   "end": {
-                    "offset": 4031,
-                    "line": 142,
+                    "offset": 4108,
+                    "line": 150,
                     "column": 29
                   }
                 }
@@ -7971,13 +8252,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4005,
-              "line": 142,
+              "offset": 4082,
+              "line": 150,
               "column": 3
             },
             "end": {
-              "offset": 4032,
-              "line": 142,
+              "offset": 4109,
+              "line": 150,
               "column": 30
             }
           }
@@ -7985,13 +8266,13 @@
       ],
       "location": {
         "start": {
-          "offset": 3704,
-          "line": 134,
+          "offset": 3781,
+          "line": 142,
           "column": 1
         },
         "end": {
-          "offset": 4034,
-          "line": 143,
+          "offset": 4111,
+          "line": 151,
           "column": 2
         }
       }
@@ -8003,13 +8284,13 @@
         "value": "documents",
         "location": {
           "start": {
-            "offset": 4042,
-            "line": 145,
+            "offset": 4119,
+            "line": 153,
             "column": 7
           },
           "end": {
-            "offset": 4051,
-            "line": 145,
+            "offset": 4128,
+            "line": 153,
             "column": 16
           }
         }
@@ -8022,13 +8303,13 @@
             "value": "id",
             "location": {
               "start": {
-                "offset": 4056,
-                "line": 146,
+                "offset": 4133,
+                "line": 154,
                 "column": 3
               },
               "end": {
-                "offset": 4058,
-                "line": 146,
+                "offset": 4135,
+                "line": 154,
                 "column": 5
               }
             }
@@ -8040,13 +8321,13 @@
               "value": "String",
               "location": {
                 "start": {
-                  "offset": 4068,
-                  "line": 146,
+                  "offset": 4145,
+                  "line": 154,
                   "column": 15
                 },
                 "end": {
-                  "offset": 4074,
-                  "line": 146,
+                  "offset": 4151,
+                  "line": 154,
                   "column": 21
                 }
               }
@@ -8062,13 +8343,13 @@
                 ],
                 "location": {
                   "start": {
-                    "offset": 4082,
-                    "line": 146,
+                    "offset": 4159,
+                    "line": 154,
                     "column": 29
                   },
                   "end": {
-                    "offset": 4085,
-                    "line": 146,
+                    "offset": 4162,
+                    "line": 154,
                     "column": 32
                   }
                 }
@@ -8076,13 +8357,13 @@
               "args": [],
               "location": {
                 "start": {
-                  "offset": 4081,
-                  "line": 146,
+                  "offset": 4158,
+                  "line": 154,
                   "column": 28
                 },
                 "end": {
-                  "offset": 4085,
-                  "line": 146,
+                  "offset": 4162,
+                  "line": 154,
                   "column": 32
                 }
               }
@@ -8096,13 +8377,13 @@
                 ],
                 "location": {
                   "start": {
-                    "offset": 4086,
-                    "line": 146,
+                    "offset": 4163,
+                    "line": 154,
                     "column": 33
                   },
                   "end": {
-                    "offset": 4093,
-                    "line": 146,
+                    "offset": 4170,
+                    "line": 154,
                     "column": 40
                   }
                 }
@@ -8117,13 +8398,13 @@
                     ],
                     "location": {
                       "start": {
-                        "offset": 4094,
-                        "line": 146,
+                        "offset": 4171,
+                        "line": 154,
                         "column": 41
                       },
                       "end": {
-                        "offset": 4098,
-                        "line": 146,
+                        "offset": 4175,
+                        "line": 154,
                         "column": 45
                       }
                     }
@@ -8133,13 +8414,13 @@
               ],
               "location": {
                 "start": {
-                  "offset": 4085,
-                  "line": 146,
+                  "offset": 4162,
+                  "line": 154,
                   "column": 32
                 },
                 "end": {
-                  "offset": 4101,
-                  "line": 146,
+                  "offset": 4178,
+                  "line": 154,
                   "column": 48
                 }
               }
@@ -8148,13 +8429,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4056,
-              "line": 146,
+              "offset": 4133,
+              "line": 154,
               "column": 3
             },
             "end": {
-              "offset": 4101,
-              "line": 146,
+              "offset": 4178,
+              "line": 154,
               "column": 48
             }
           }
@@ -8166,13 +8447,13 @@
             "value": "type",
             "location": {
               "start": {
-                "offset": 4104,
-                "line": 147,
+                "offset": 4181,
+                "line": 155,
                 "column": 3
               },
               "end": {
-                "offset": 4108,
-                "line": 147,
+                "offset": 4185,
+                "line": 155,
                 "column": 7
               }
             }
@@ -8184,13 +8465,13 @@
               "value": "documentType",
               "location": {
                 "start": {
-                  "offset": 4116,
-                  "line": 147,
+                  "offset": 4193,
+                  "line": 155,
                   "column": 15
                 },
                 "end": {
-                  "offset": 4128,
-                  "line": 147,
+                  "offset": 4205,
+                  "line": 155,
                   "column": 27
                 }
               }
@@ -8200,13 +8481,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4104,
-              "line": 147,
+              "offset": 4181,
+              "line": 155,
               "column": 3
             },
             "end": {
-              "offset": 4128,
-              "line": 147,
+              "offset": 4205,
+              "line": 155,
               "column": 27
             }
           }
@@ -8218,13 +8499,13 @@
             "value": "documentUrl",
             "location": {
               "start": {
-                "offset": 4131,
-                "line": 148,
+                "offset": 4208,
+                "line": 156,
                 "column": 3
               },
               "end": {
-                "offset": 4142,
-                "line": 148,
+                "offset": 4219,
+                "line": 156,
                 "column": 14
               }
             }
@@ -8236,13 +8517,13 @@
               "value": "String",
               "location": {
                 "start": {
-                  "offset": 4143,
-                  "line": 148,
+                  "offset": 4220,
+                  "line": 156,
                   "column": 15
                 },
                 "end": {
-                  "offset": 4149,
-                  "line": 148,
+                  "offset": 4226,
+                  "line": 156,
                   "column": 21
                 }
               }
@@ -8252,13 +8533,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4131,
-              "line": 148,
+              "offset": 4208,
+              "line": 156,
               "column": 3
             },
             "end": {
-              "offset": 4149,
-              "line": 148,
+              "offset": 4226,
+              "line": 156,
               "column": 21
             }
           }
@@ -8270,13 +8551,13 @@
             "value": "documentKey",
             "location": {
               "start": {
-                "offset": 4152,
-                "line": 149,
+                "offset": 4229,
+                "line": 157,
                 "column": 3
               },
               "end": {
-                "offset": 4163,
-                "line": 149,
+                "offset": 4240,
+                "line": 157,
                 "column": 14
               }
             }
@@ -8288,13 +8569,13 @@
               "value": "String",
               "location": {
                 "start": {
-                  "offset": 4164,
-                  "line": 149,
+                  "offset": 4241,
+                  "line": 157,
                   "column": 15
                 },
                 "end": {
-                  "offset": 4170,
-                  "line": 149,
+                  "offset": 4247,
+                  "line": 157,
                   "column": 21
                 }
               }
@@ -8304,13 +8585,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4152,
-              "line": 149,
+              "offset": 4229,
+              "line": 157,
               "column": 3
             },
             "end": {
-              "offset": 4170,
-              "line": 149,
+              "offset": 4247,
+              "line": 157,
               "column": 21
             }
           }
@@ -8322,13 +8603,13 @@
             "value": "person",
             "location": {
               "start": {
-                "offset": 4173,
-                "line": 150,
+                "offset": 4250,
+                "line": 158,
                 "column": 3
               },
               "end": {
-                "offset": 4179,
-                "line": 150,
+                "offset": 4256,
+                "line": 158,
                 "column": 9
               }
             }
@@ -8342,13 +8623,13 @@
                 "value": "person",
                 "location": {
                   "start": {
-                    "offset": 4185,
-                    "line": 150,
+                    "offset": 4262,
+                    "line": 158,
                     "column": 15
                   },
                   "end": {
-                    "offset": 4191,
-                    "line": 150,
+                    "offset": 4268,
+                    "line": 158,
                     "column": 21
                   }
                 }
@@ -8365,13 +8646,13 @@
                 ],
                 "location": {
                   "start": {
-                    "offset": 4199,
-                    "line": 150,
+                    "offset": 4276,
+                    "line": 158,
                     "column": 29
                   },
                   "end": {
-                    "offset": 4207,
-                    "line": 150,
+                    "offset": 4284,
+                    "line": 158,
                     "column": 37
                   }
                 }
@@ -8384,13 +8665,13 @@
                     "value": "fields",
                     "location": {
                       "start": {
-                        "offset": 4208,
-                        "line": 150,
+                        "offset": 4285,
+                        "line": 158,
                         "column": 38
                       },
                       "end": {
-                        "offset": 4214,
-                        "line": 150,
+                        "offset": 4291,
+                        "line": 158,
                         "column": 44
                       }
                     }
@@ -8405,13 +8686,13 @@
                         ],
                         "location": {
                           "start": {
-                            "offset": 4217,
-                            "line": 150,
+                            "offset": 4294,
+                            "line": 158,
                             "column": 47
                           },
                           "end": {
-                            "offset": 4225,
-                            "line": 150,
+                            "offset": 4302,
+                            "line": 158,
                             "column": 55
                           }
                         }
@@ -8426,13 +8707,13 @@
                     "value": "references",
                     "location": {
                       "start": {
-                        "offset": 4228,
-                        "line": 150,
+                        "offset": 4305,
+                        "line": 158,
                         "column": 58
                       },
                       "end": {
-                        "offset": 4238,
-                        "line": 150,
+                        "offset": 4315,
+                        "line": 158,
                         "column": 68
                       }
                     }
@@ -8447,13 +8728,13 @@
                         ],
                         "location": {
                           "start": {
-                            "offset": 4241,
-                            "line": 150,
+                            "offset": 4318,
+                            "line": 158,
                             "column": 71
                           },
                           "end": {
-                            "offset": 4243,
-                            "line": 150,
+                            "offset": 4320,
+                            "line": 158,
                             "column": 73
                           }
                         }
@@ -8464,13 +8745,13 @@
               ],
               "location": {
                 "start": {
-                  "offset": 4198,
-                  "line": 150,
+                  "offset": 4275,
+                  "line": 158,
                   "column": 28
                 },
                 "end": {
-                  "offset": 4245,
-                  "line": 150,
+                  "offset": 4322,
+                  "line": 158,
                   "column": 75
                 }
               }
@@ -8479,13 +8760,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4173,
-              "line": 150,
+              "offset": 4250,
+              "line": 158,
               "column": 3
             },
             "end": {
-              "offset": 4245,
-              "line": 150,
+              "offset": 4322,
+              "line": 158,
               "column": 75
             }
           }
@@ -8497,13 +8778,13 @@
             "value": "personId",
             "location": {
               "start": {
-                "offset": 4248,
-                "line": 151,
+                "offset": 4325,
+                "line": 159,
                 "column": 3
               },
               "end": {
-                "offset": 4256,
-                "line": 151,
+                "offset": 4333,
+                "line": 159,
                 "column": 11
               }
             }
@@ -8517,13 +8798,13 @@
                 "value": "String",
                 "location": {
                   "start": {
-                    "offset": 4260,
-                    "line": 151,
+                    "offset": 4337,
+                    "line": 159,
                     "column": 15
                   },
                   "end": {
-                    "offset": 4266,
-                    "line": 151,
+                    "offset": 4343,
+                    "line": 159,
                     "column": 21
                   }
                 }
@@ -8534,13 +8815,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4248,
-              "line": 151,
+              "offset": 4325,
+              "line": 159,
               "column": 3
             },
             "end": {
-              "offset": 4267,
-              "line": 151,
+              "offset": 4344,
+              "line": 159,
               "column": 22
             }
           }
@@ -8548,13 +8829,13 @@
       ],
       "location": {
         "start": {
-          "offset": 4036,
-          "line": 145,
+          "offset": 4113,
+          "line": 153,
           "column": 1
         },
         "end": {
-          "offset": 4269,
-          "line": 152,
+          "offset": 4346,
+          "line": 160,
           "column": 2
         }
       }
@@ -8566,13 +8847,13 @@
         "value": "documentType",
         "location": {
           "start": {
-            "offset": 4276,
-            "line": 154,
+            "offset": 4353,
+            "line": 162,
             "column": 6
           },
           "end": {
-            "offset": 4288,
-            "line": 154,
+            "offset": 4365,
+            "line": 162,
             "column": 18
           }
         }
@@ -8585,13 +8866,13 @@
             "value": "PASSPORT",
             "location": {
               "start": {
-                "offset": 4293,
-                "line": 155,
+                "offset": 4370,
+                "line": 163,
                 "column": 3
               },
               "end": {
-                "offset": 4301,
-                "line": 155,
+                "offset": 4378,
+                "line": 163,
                 "column": 11
               }
             }
@@ -8600,13 +8881,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4293,
-              "line": 155,
+              "offset": 4370,
+              "line": 163,
               "column": 3
             },
             "end": {
-              "offset": 4301,
-              "line": 155,
+              "offset": 4378,
+              "line": 163,
               "column": 11
             }
           }
@@ -8618,13 +8899,13 @@
             "value": "NATIONALID",
             "location": {
               "start": {
-                "offset": 4304,
-                "line": 156,
+                "offset": 4381,
+                "line": 164,
                 "column": 3
               },
               "end": {
-                "offset": 4314,
-                "line": 156,
+                "offset": 4391,
+                "line": 164,
                 "column": 13
               }
             }
@@ -8633,13 +8914,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4304,
-              "line": 156,
+              "offset": 4381,
+              "line": 164,
               "column": 3
             },
             "end": {
-              "offset": 4314,
-              "line": 156,
+              "offset": 4391,
+              "line": 164,
               "column": 13
             }
           }
@@ -8651,13 +8932,13 @@
             "value": "DRIVERLICENSE",
             "location": {
               "start": {
-                "offset": 4317,
-                "line": 157,
+                "offset": 4394,
+                "line": 165,
                 "column": 3
               },
               "end": {
-                "offset": 4330,
-                "line": 157,
+                "offset": 4407,
+                "line": 165,
                 "column": 16
               }
             }
@@ -8666,13 +8947,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4317,
-              "line": 157,
+              "offset": 4394,
+              "line": 165,
               "column": 3
             },
             "end": {
-              "offset": 4330,
-              "line": 157,
+              "offset": 4407,
+              "line": 165,
               "column": 16
             }
           }
@@ -8684,13 +8965,13 @@
             "value": "UTITLITYBILL",
             "location": {
               "start": {
-                "offset": 4333,
-                "line": 158,
+                "offset": 4410,
+                "line": 166,
                 "column": 3
               },
               "end": {
-                "offset": 4345,
-                "line": 158,
+                "offset": 4422,
+                "line": 166,
                 "column": 15
               }
             }
@@ -8699,13 +8980,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4333,
-              "line": 158,
+              "offset": 4410,
+              "line": 166,
               "column": 3
             },
             "end": {
-              "offset": 4345,
-              "line": 158,
+              "offset": 4422,
+              "line": 166,
               "column": 15
             }
           }
@@ -8717,13 +8998,13 @@
             "value": "LEASEAGREEMENT",
             "location": {
               "start": {
-                "offset": 4348,
-                "line": 159,
+                "offset": 4425,
+                "line": 167,
                 "column": 3
               },
               "end": {
-                "offset": 4362,
-                "line": 159,
+                "offset": 4439,
+                "line": 167,
                 "column": 17
               }
             }
@@ -8732,13 +9013,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4348,
-              "line": 159,
+              "offset": 4425,
+              "line": 167,
               "column": 3
             },
             "end": {
-              "offset": 4362,
-              "line": 159,
+              "offset": 4439,
+              "line": 167,
               "column": 17
             }
           }
@@ -8750,13 +9031,13 @@
             "value": "TAXRETURNS",
             "location": {
               "start": {
-                "offset": 4365,
-                "line": 160,
+                "offset": 4442,
+                "line": 168,
                 "column": 3
               },
               "end": {
-                "offset": 4375,
-                "line": 160,
+                "offset": 4452,
+                "line": 168,
                 "column": 13
               }
             }
@@ -8765,13 +9046,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4365,
-              "line": 160,
+              "offset": 4442,
+              "line": 168,
               "column": 3
             },
             "end": {
-              "offset": 4375,
-              "line": 160,
+              "offset": 4452,
+              "line": 168,
               "column": 13
             }
           }
@@ -8783,13 +9064,13 @@
             "value": "BANKSTATMENT",
             "location": {
               "start": {
-                "offset": 4378,
-                "line": 161,
+                "offset": 4455,
+                "line": 169,
                 "column": 3
               },
               "end": {
-                "offset": 4390,
-                "line": 161,
+                "offset": 4467,
+                "line": 169,
                 "column": 15
               }
             }
@@ -8798,13 +9079,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4378,
-              "line": 161,
+              "offset": 4455,
+              "line": 169,
               "column": 3
             },
             "end": {
-              "offset": 4390,
-              "line": 161,
+              "offset": 4467,
+              "line": 169,
               "column": 15
             }
           }
@@ -8816,13 +9097,13 @@
             "value": "CREDITREPORT",
             "location": {
               "start": {
-                "offset": 4393,
-                "line": 162,
+                "offset": 4470,
+                "line": 170,
                 "column": 3
               },
               "end": {
-                "offset": 4405,
-                "line": 162,
+                "offset": 4482,
+                "line": 170,
                 "column": 15
               }
             }
@@ -8831,13 +9112,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4393,
-              "line": 162,
+              "offset": 4470,
+              "line": 170,
               "column": 3
             },
             "end": {
-              "offset": 4405,
-              "line": 162,
+              "offset": 4482,
+              "line": 170,
               "column": 15
             }
           }
@@ -8849,13 +9130,13 @@
             "value": "RECENTPAYSTUBS",
             "location": {
               "start": {
-                "offset": 4408,
-                "line": 163,
+                "offset": 4485,
+                "line": 171,
                 "column": 3
               },
               "end": {
-                "offset": 4422,
-                "line": 163,
+                "offset": 4499,
+                "line": 171,
                 "column": 17
               }
             }
@@ -8864,13 +9145,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4408,
-              "line": 163,
+              "offset": 4485,
+              "line": 171,
               "column": 3
             },
             "end": {
-              "offset": 4422,
-              "line": 163,
+              "offset": 4499,
+              "line": 171,
               "column": 17
             }
           }
@@ -8878,13 +9159,13 @@
       ],
       "location": {
         "start": {
-          "offset": 4271,
-          "line": 154,
+          "offset": 4348,
+          "line": 162,
           "column": 1
         },
         "end": {
-          "offset": 4424,
-          "line": 164,
+          "offset": 4501,
+          "line": 172,
           "column": 2
         }
       }
@@ -8896,13 +9177,13 @@
         "value": "loanType",
         "location": {
           "start": {
-            "offset": 4431,
-            "line": 166,
+            "offset": 4508,
+            "line": 174,
             "column": 6
           },
           "end": {
-            "offset": 4439,
-            "line": 166,
+            "offset": 4516,
+            "line": 174,
             "column": 14
           }
         }
@@ -8915,13 +9196,13 @@
             "value": "PERSONAL",
             "location": {
               "start": {
-                "offset": 4444,
-                "line": 167,
+                "offset": 4521,
+                "line": 175,
                 "column": 3
               },
               "end": {
-                "offset": 4452,
-                "line": 167,
+                "offset": 4529,
+                "line": 175,
                 "column": 11
               }
             }
@@ -8930,13 +9211,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4444,
-              "line": 167,
+              "offset": 4521,
+              "line": 175,
               "column": 3
             },
             "end": {
-              "offset": 4452,
-              "line": 167,
+              "offset": 4529,
+              "line": 175,
               "column": 11
             }
           }
@@ -8948,13 +9229,13 @@
             "value": "AUTO",
             "location": {
               "start": {
-                "offset": 4455,
-                "line": 168,
+                "offset": 4532,
+                "line": 176,
                 "column": 3
               },
               "end": {
-                "offset": 4459,
-                "line": 168,
+                "offset": 4536,
+                "line": 176,
                 "column": 7
               }
             }
@@ -8963,13 +9244,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4455,
-              "line": 168,
+              "offset": 4532,
+              "line": 176,
               "column": 3
             },
             "end": {
-              "offset": 4459,
-              "line": 168,
+              "offset": 4536,
+              "line": 176,
               "column": 7
             }
           }
@@ -8981,13 +9262,13 @@
             "value": "MORTGAGE",
             "location": {
               "start": {
-                "offset": 4462,
-                "line": 169,
+                "offset": 4539,
+                "line": 177,
                 "column": 3
               },
               "end": {
-                "offset": 4470,
-                "line": 169,
+                "offset": 4547,
+                "line": 177,
                 "column": 11
               }
             }
@@ -8996,13 +9277,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4462,
-              "line": 169,
+              "offset": 4539,
+              "line": 177,
               "column": 3
             },
             "end": {
-              "offset": 4470,
-              "line": 169,
+              "offset": 4547,
+              "line": 177,
               "column": 11
             }
           }
@@ -9014,212 +9295,14 @@
             "value": "STUDENT",
             "location": {
               "start": {
-                "offset": 4473,
-                "line": 170,
-                "column": 3
-              },
-              "end": {
-                "offset": 4480,
-                "line": 170,
-                "column": 10
-              }
-            }
-          },
-          "attributes": [],
-          "comment": null,
-          "location": {
-            "start": {
-              "offset": 4473,
-              "line": 170,
-              "column": 3
-            },
-            "end": {
-              "offset": 4480,
-              "line": 170,
-              "column": 10
-            }
-          }
-        },
-        {
-          "kind": "enumValue",
-          "name": {
-            "kind": "name",
-            "value": "COOPERATE",
-            "location": {
-              "start": {
-                "offset": 4483,
-                "line": 171,
-                "column": 3
-              },
-              "end": {
-                "offset": 4492,
-                "line": 171,
-                "column": 12
-              }
-            }
-          },
-          "attributes": [],
-          "comment": null,
-          "location": {
-            "start": {
-              "offset": 4483,
-              "line": 171,
-              "column": 3
-            },
-            "end": {
-              "offset": 4492,
-              "line": 171,
-              "column": 12
-            }
-          }
-        },
-        {
-          "kind": "enumValue",
-          "name": {
-            "kind": "name",
-            "value": "BUSINESS",
-            "location": {
-              "start": {
-                "offset": 4495,
-                "line": 172,
-                "column": 3
-              },
-              "end": {
-                "offset": 4503,
-                "line": 172,
-                "column": 11
-              }
-            }
-          },
-          "attributes": [],
-          "comment": null,
-          "location": {
-            "start": {
-              "offset": 4495,
-              "line": 172,
-              "column": 3
-            },
-            "end": {
-              "offset": 4503,
-              "line": 172,
-              "column": 11
-            }
-          }
-        }
-      ],
-      "location": {
-        "start": {
-          "offset": 4426,
-          "line": 166,
-          "column": 1
-        },
-        "end": {
-          "offset": 4505,
-          "line": 173,
-          "column": 2
-        }
-      }
-    },
-    {
-      "kind": "enum",
-      "name": {
-        "kind": "name",
-        "value": "accountType",
-        "location": {
-          "start": {
-            "offset": 4512,
-            "line": 175,
-            "column": 6
-          },
-          "end": {
-            "offset": 4523,
-            "line": 175,
-            "column": 17
-          }
-        }
-      },
-      "members": [
-        {
-          "kind": "enumValue",
-          "name": {
-            "kind": "name",
-            "value": "SAVINGS",
-            "location": {
-              "start": {
-                "offset": 4528,
-                "line": 176,
-                "column": 3
-              },
-              "end": {
-                "offset": 4535,
-                "line": 176,
-                "column": 10
-              }
-            }
-          },
-          "attributes": [],
-          "comment": null,
-          "location": {
-            "start": {
-              "offset": 4528,
-              "line": 176,
-              "column": 3
-            },
-            "end": {
-              "offset": 4535,
-              "line": 176,
-              "column": 10
-            }
-          }
-        },
-        {
-          "kind": "enumValue",
-          "name": {
-            "kind": "name",
-            "value": "CURRENT",
-            "location": {
-              "start": {
-                "offset": 4538,
-                "line": 177,
-                "column": 3
-              },
-              "end": {
-                "offset": 4545,
-                "line": 177,
-                "column": 10
-              }
-            }
-          },
-          "attributes": [],
-          "comment": null,
-          "location": {
-            "start": {
-              "offset": 4538,
-              "line": 177,
-              "column": 3
-            },
-            "end": {
-              "offset": 4545,
-              "line": 177,
-              "column": 10
-            }
-          }
-        },
-        {
-          "kind": "enumValue",
-          "name": {
-            "kind": "name",
-            "value": "COOPERATE",
-            "location": {
-              "start": {
-                "offset": 4548,
+                "offset": 4550,
                 "line": 178,
                 "column": 3
               },
               "end": {
                 "offset": 4557,
                 "line": 178,
-                "column": 12
+                "column": 10
               }
             }
           },
@@ -9227,14 +9310,14 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4548,
+              "offset": 4550,
               "line": 178,
               "column": 3
             },
             "end": {
               "offset": 4557,
               "line": 178,
-              "column": 12
+              "column": 10
             }
           }
         },
@@ -9242,7 +9325,7 @@
           "kind": "enumValue",
           "name": {
             "kind": "name",
-            "value": "SUSU",
+            "value": "COOPERATE",
             "location": {
               "start": {
                 "offset": 4560,
@@ -9250,9 +9333,9 @@
                 "column": 3
               },
               "end": {
-                "offset": 4564,
+                "offset": 4569,
                 "line": 179,
-                "column": 7
+                "column": 12
               }
             }
           },
@@ -9265,8 +9348,206 @@
               "column": 3
             },
             "end": {
-              "offset": 4564,
+              "offset": 4569,
               "line": 179,
+              "column": 12
+            }
+          }
+        },
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "BUSINESS",
+            "location": {
+              "start": {
+                "offset": 4572,
+                "line": 180,
+                "column": 3
+              },
+              "end": {
+                "offset": 4580,
+                "line": 180,
+                "column": 11
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 4572,
+              "line": 180,
+              "column": 3
+            },
+            "end": {
+              "offset": 4580,
+              "line": 180,
+              "column": 11
+            }
+          }
+        }
+      ],
+      "location": {
+        "start": {
+          "offset": 4503,
+          "line": 174,
+          "column": 1
+        },
+        "end": {
+          "offset": 4582,
+          "line": 181,
+          "column": 2
+        }
+      }
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "kind": "name",
+        "value": "accountType",
+        "location": {
+          "start": {
+            "offset": 4589,
+            "line": 183,
+            "column": 6
+          },
+          "end": {
+            "offset": 4600,
+            "line": 183,
+            "column": 17
+          }
+        }
+      },
+      "members": [
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "SAVINGS",
+            "location": {
+              "start": {
+                "offset": 4605,
+                "line": 184,
+                "column": 3
+              },
+              "end": {
+                "offset": 4612,
+                "line": 184,
+                "column": 10
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 4605,
+              "line": 184,
+              "column": 3
+            },
+            "end": {
+              "offset": 4612,
+              "line": 184,
+              "column": 10
+            }
+          }
+        },
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "CURRENT",
+            "location": {
+              "start": {
+                "offset": 4615,
+                "line": 185,
+                "column": 3
+              },
+              "end": {
+                "offset": 4622,
+                "line": 185,
+                "column": 10
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 4615,
+              "line": 185,
+              "column": 3
+            },
+            "end": {
+              "offset": 4622,
+              "line": 185,
+              "column": 10
+            }
+          }
+        },
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "COOPERATE",
+            "location": {
+              "start": {
+                "offset": 4625,
+                "line": 186,
+                "column": 3
+              },
+              "end": {
+                "offset": 4634,
+                "line": 186,
+                "column": 12
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 4625,
+              "line": 186,
+              "column": 3
+            },
+            "end": {
+              "offset": 4634,
+              "line": 186,
+              "column": 12
+            }
+          }
+        },
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "SUSU",
+            "location": {
+              "start": {
+                "offset": 4637,
+                "line": 187,
+                "column": 3
+              },
+              "end": {
+                "offset": 4641,
+                "line": 187,
+                "column": 7
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 4637,
+              "line": 187,
+              "column": 3
+            },
+            "end": {
+              "offset": 4641,
+              "line": 187,
               "column": 7
             }
           }
@@ -9278,212 +9559,14 @@
             "value": "FIXEDDEPOSIT",
             "location": {
               "start": {
-                "offset": 4567,
-                "line": 180,
-                "column": 3
-              },
-              "end": {
-                "offset": 4579,
-                "line": 180,
-                "column": 15
-              }
-            }
-          },
-          "attributes": [],
-          "comment": null,
-          "location": {
-            "start": {
-              "offset": 4567,
-              "line": 180,
-              "column": 3
-            },
-            "end": {
-              "offset": 4579,
-              "line": 180,
-              "column": 15
-            }
-          }
-        },
-        {
-          "kind": "enumValue",
-          "name": {
-            "kind": "name",
-            "value": "TBILL",
-            "location": {
-              "start": {
-                "offset": 4582,
-                "line": 181,
-                "column": 3
-              },
-              "end": {
-                "offset": 4587,
-                "line": 181,
-                "column": 8
-              }
-            }
-          },
-          "attributes": [],
-          "comment": null,
-          "location": {
-            "start": {
-              "offset": 4582,
-              "line": 181,
-              "column": 3
-            },
-            "end": {
-              "offset": 4587,
-              "line": 181,
-              "column": 8
-            }
-          }
-        },
-        {
-          "kind": "enumValue",
-          "name": {
-            "kind": "name",
-            "value": "BONDS",
-            "location": {
-              "start": {
-                "offset": 4590,
-                "line": 182,
-                "column": 3
-              },
-              "end": {
-                "offset": 4595,
-                "line": 182,
-                "column": 8
-              }
-            }
-          },
-          "attributes": [],
-          "comment": null,
-          "location": {
-            "start": {
-              "offset": 4590,
-              "line": 182,
-              "column": 3
-            },
-            "end": {
-              "offset": 4595,
-              "line": 182,
-              "column": 8
-            }
-          }
-        }
-      ],
-      "location": {
-        "start": {
-          "offset": 4507,
-          "line": 175,
-          "column": 1
-        },
-        "end": {
-          "offset": 4597,
-          "line": 183,
-          "column": 2
-        }
-      }
-    },
-    {
-      "kind": "enum",
-      "name": {
-        "kind": "name",
-        "value": "expenseType",
-        "location": {
-          "start": {
-            "offset": 4604,
-            "line": 185,
-            "column": 6
-          },
-          "end": {
-            "offset": 4615,
-            "line": 185,
-            "column": 17
-          }
-        }
-      },
-      "members": [
-        {
-          "kind": "enumValue",
-          "name": {
-            "kind": "name",
-            "value": "UTILITIES",
-            "location": {
-              "start": {
-                "offset": 4620,
-                "line": 186,
-                "column": 3
-              },
-              "end": {
-                "offset": 4629,
-                "line": 186,
-                "column": 12
-              }
-            }
-          },
-          "attributes": [],
-          "comment": null,
-          "location": {
-            "start": {
-              "offset": 4620,
-              "line": 186,
-              "column": 3
-            },
-            "end": {
-              "offset": 4629,
-              "line": 186,
-              "column": 12
-            }
-          }
-        },
-        {
-          "kind": "enumValue",
-          "name": {
-            "kind": "name",
-            "value": "GROCERIES",
-            "location": {
-              "start": {
-                "offset": 4632,
-                "line": 187,
-                "column": 3
-              },
-              "end": {
-                "offset": 4641,
-                "line": 187,
-                "column": 12
-              }
-            }
-          },
-          "attributes": [],
-          "comment": null,
-          "location": {
-            "start": {
-              "offset": 4632,
-              "line": 187,
-              "column": 3
-            },
-            "end": {
-              "offset": 4641,
-              "line": 187,
-              "column": 12
-            }
-          }
-        },
-        {
-          "kind": "enumValue",
-          "name": {
-            "kind": "name",
-            "value": "TRANSPORTATION",
-            "location": {
-              "start": {
                 "offset": 4644,
                 "line": 188,
                 "column": 3
               },
               "end": {
-                "offset": 4658,
+                "offset": 4656,
                 "line": 188,
-                "column": 17
+                "column": 15
               }
             }
           },
@@ -9496,9 +9579,9 @@
               "column": 3
             },
             "end": {
-              "offset": 4658,
+              "offset": 4656,
               "line": 188,
-              "column": 17
+              "column": 15
             }
           }
         },
@@ -9506,17 +9589,17 @@
           "kind": "enumValue",
           "name": {
             "kind": "name",
-            "value": "INSURANCES",
+            "value": "TBILL",
             "location": {
               "start": {
-                "offset": 4661,
+                "offset": 4659,
                 "line": 189,
                 "column": 3
               },
               "end": {
-                "offset": 4671,
+                "offset": 4664,
                 "line": 189,
-                "column": 13
+                "column": 8
               }
             }
           },
@@ -9524,14 +9607,14 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4661,
+              "offset": 4659,
               "line": 189,
               "column": 3
             },
             "end": {
-              "offset": 4671,
+              "offset": 4664,
               "line": 189,
-              "column": 13
+              "column": 8
             }
           }
         },
@@ -9539,17 +9622,17 @@
           "kind": "enumValue",
           "name": {
             "kind": "name",
-            "value": "OTHERS",
+            "value": "BONDS",
             "location": {
               "start": {
-                "offset": 4674,
+                "offset": 4667,
                 "line": 190,
                 "column": 3
               },
               "end": {
-                "offset": 4680,
+                "offset": 4672,
                 "line": 190,
-                "column": 9
+                "column": 8
               }
             }
           },
@@ -9557,26 +9640,26 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4674,
+              "offset": 4667,
               "line": 190,
               "column": 3
             },
             "end": {
-              "offset": 4680,
+              "offset": 4672,
               "line": 190,
-              "column": 9
+              "column": 8
             }
           }
         }
       ],
       "location": {
         "start": {
-          "offset": 4599,
-          "line": 185,
+          "offset": 4584,
+          "line": 183,
           "column": 1
         },
         "end": {
-          "offset": 4682,
+          "offset": 4674,
           "line": 191,
           "column": 2
         }
@@ -9586,17 +9669,17 @@
       "kind": "enum",
       "name": {
         "kind": "name",
-        "value": "incomeType",
+        "value": "expenseType",
         "location": {
           "start": {
-            "offset": 4689,
+            "offset": 4681,
             "line": 193,
             "column": 6
           },
           "end": {
-            "offset": 4699,
+            "offset": 4692,
             "line": 193,
-            "column": 16
+            "column": 17
           }
         }
       },
@@ -9605,17 +9688,17 @@
           "kind": "enumValue",
           "name": {
             "kind": "name",
-            "value": "WAGES",
+            "value": "UTILITIES",
             "location": {
               "start": {
-                "offset": 4704,
+                "offset": 4697,
                 "line": 194,
                 "column": 3
               },
               "end": {
-                "offset": 4709,
+                "offset": 4706,
                 "line": 194,
-                "column": 8
+                "column": 12
               }
             }
           },
@@ -9623,14 +9706,14 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4704,
+              "offset": 4697,
               "line": 194,
               "column": 3
             },
             "end": {
-              "offset": 4709,
+              "offset": 4706,
               "line": 194,
-              "column": 8
+              "column": 12
             }
           }
         },
@@ -9638,17 +9721,17 @@
           "kind": "enumValue",
           "name": {
             "kind": "name",
-            "value": "SALARY",
+            "value": "GROCERIES",
             "location": {
               "start": {
-                "offset": 4712,
+                "offset": 4709,
                 "line": 195,
                 "column": 3
               },
               "end": {
                 "offset": 4718,
                 "line": 195,
-                "column": 9
+                "column": 12
               }
             }
           },
@@ -9656,14 +9739,14 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4712,
+              "offset": 4709,
               "line": 195,
               "column": 3
             },
             "end": {
               "offset": 4718,
               "line": 195,
-              "column": 9
+              "column": 12
             }
           }
         },
@@ -9671,7 +9754,7 @@
           "kind": "enumValue",
           "name": {
             "kind": "name",
-            "value": "BONUSES",
+            "value": "TRANSPORTATION",
             "location": {
               "start": {
                 "offset": 4721,
@@ -9679,9 +9762,9 @@
                 "column": 3
               },
               "end": {
-                "offset": 4728,
+                "offset": 4735,
                 "line": 196,
-                "column": 10
+                "column": 17
               }
             }
           },
@@ -9694,9 +9777,42 @@
               "column": 3
             },
             "end": {
-              "offset": 4728,
+              "offset": 4735,
               "line": 196,
-              "column": 10
+              "column": 17
+            }
+          }
+        },
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "INSURANCES",
+            "location": {
+              "start": {
+                "offset": 4738,
+                "line": 197,
+                "column": 3
+              },
+              "end": {
+                "offset": 4748,
+                "line": 197,
+                "column": 13
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 4738,
+              "line": 197,
+              "column": 3
+            },
+            "end": {
+              "offset": 4748,
+              "line": 197,
+              "column": 13
             }
           }
         },
@@ -9707,13 +9823,13 @@
             "value": "OTHERS",
             "location": {
               "start": {
-                "offset": 4731,
-                "line": 197,
+                "offset": 4751,
+                "line": 198,
                 "column": 3
               },
               "end": {
-                "offset": 4737,
-                "line": 197,
+                "offset": 4757,
+                "line": 198,
                 "column": 9
               }
             }
@@ -9722,13 +9838,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4731,
-              "line": 197,
+              "offset": 4751,
+              "line": 198,
               "column": 3
             },
             "end": {
-              "offset": 4737,
-              "line": 197,
+              "offset": 4757,
+              "line": 198,
               "column": 9
             }
           }
@@ -9736,13 +9852,13 @@
       ],
       "location": {
         "start": {
-          "offset": 4684,
+          "offset": 4676,
           "line": 193,
           "column": 1
         },
         "end": {
-          "offset": 4739,
-          "line": 198,
+          "offset": 4759,
+          "line": 199,
           "column": 2
         }
       }
@@ -9751,17 +9867,17 @@
       "kind": "enum",
       "name": {
         "kind": "name",
-        "value": "employmentType",
+        "value": "incomeType",
         "location": {
           "start": {
-            "offset": 4746,
-            "line": 200,
+            "offset": 4766,
+            "line": 201,
             "column": 6
           },
           "end": {
-            "offset": 4760,
-            "line": 200,
-            "column": 20
+            "offset": 4776,
+            "line": 201,
+            "column": 16
           }
         }
       },
@@ -9770,17 +9886,17 @@
           "kind": "enumValue",
           "name": {
             "kind": "name",
-            "value": "FULLTIME",
+            "value": "WAGES",
             "location": {
               "start": {
-                "offset": 4765,
-                "line": 201,
+                "offset": 4781,
+                "line": 202,
                 "column": 3
               },
               "end": {
-                "offset": 4773,
-                "line": 201,
-                "column": 11
+                "offset": 4786,
+                "line": 202,
+                "column": 8
               }
             }
           },
@@ -9788,14 +9904,14 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4765,
-              "line": 201,
+              "offset": 4781,
+              "line": 202,
               "column": 3
             },
             "end": {
-              "offset": 4773,
-              "line": 201,
-              "column": 11
+              "offset": 4786,
+              "line": 202,
+              "column": 8
             }
           }
         },
@@ -9803,50 +9919,17 @@
           "kind": "enumValue",
           "name": {
             "kind": "name",
-            "value": "PARTTIME",
+            "value": "SALARY",
             "location": {
               "start": {
-                "offset": 4776,
-                "line": 202,
-                "column": 3
-              },
-              "end": {
-                "offset": 4784,
-                "line": 202,
-                "column": 11
-              }
-            }
-          },
-          "attributes": [],
-          "comment": null,
-          "location": {
-            "start": {
-              "offset": 4776,
-              "line": 202,
-              "column": 3
-            },
-            "end": {
-              "offset": 4784,
-              "line": 202,
-              "column": 11
-            }
-          }
-        },
-        {
-          "kind": "enumValue",
-          "name": {
-            "kind": "name",
-            "value": "CONTRACT",
-            "location": {
-              "start": {
-                "offset": 4787,
+                "offset": 4789,
                 "line": 203,
                 "column": 3
               },
               "end": {
                 "offset": 4795,
                 "line": 203,
-                "column": 11
+                "column": 9
               }
             }
           },
@@ -9854,14 +9937,14 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4787,
+              "offset": 4789,
               "line": 203,
               "column": 3
             },
             "end": {
               "offset": 4795,
               "line": 203,
-              "column": 11
+              "column": 9
             }
           }
         },
@@ -9869,7 +9952,7 @@
           "kind": "enumValue",
           "name": {
             "kind": "name",
-            "value": "SELFEMPLOYED",
+            "value": "BONUSES",
             "location": {
               "start": {
                 "offset": 4798,
@@ -9877,9 +9960,9 @@
                 "column": 3
               },
               "end": {
-                "offset": 4810,
+                "offset": 4805,
                 "line": 204,
-                "column": 15
+                "column": 10
               }
             }
           },
@@ -9892,8 +9975,206 @@
               "column": 3
             },
             "end": {
-              "offset": 4810,
+              "offset": 4805,
               "line": 204,
+              "column": 10
+            }
+          }
+        },
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "OTHERS",
+            "location": {
+              "start": {
+                "offset": 4808,
+                "line": 205,
+                "column": 3
+              },
+              "end": {
+                "offset": 4814,
+                "line": 205,
+                "column": 9
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 4808,
+              "line": 205,
+              "column": 3
+            },
+            "end": {
+              "offset": 4814,
+              "line": 205,
+              "column": 9
+            }
+          }
+        }
+      ],
+      "location": {
+        "start": {
+          "offset": 4761,
+          "line": 201,
+          "column": 1
+        },
+        "end": {
+          "offset": 4816,
+          "line": 206,
+          "column": 2
+        }
+      }
+    },
+    {
+      "kind": "enum",
+      "name": {
+        "kind": "name",
+        "value": "employmentType",
+        "location": {
+          "start": {
+            "offset": 4823,
+            "line": 208,
+            "column": 6
+          },
+          "end": {
+            "offset": 4837,
+            "line": 208,
+            "column": 20
+          }
+        }
+      },
+      "members": [
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "FULLTIME",
+            "location": {
+              "start": {
+                "offset": 4842,
+                "line": 209,
+                "column": 3
+              },
+              "end": {
+                "offset": 4850,
+                "line": 209,
+                "column": 11
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 4842,
+              "line": 209,
+              "column": 3
+            },
+            "end": {
+              "offset": 4850,
+              "line": 209,
+              "column": 11
+            }
+          }
+        },
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "PARTTIME",
+            "location": {
+              "start": {
+                "offset": 4853,
+                "line": 210,
+                "column": 3
+              },
+              "end": {
+                "offset": 4861,
+                "line": 210,
+                "column": 11
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 4853,
+              "line": 210,
+              "column": 3
+            },
+            "end": {
+              "offset": 4861,
+              "line": 210,
+              "column": 11
+            }
+          }
+        },
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "CONTRACT",
+            "location": {
+              "start": {
+                "offset": 4864,
+                "line": 211,
+                "column": 3
+              },
+              "end": {
+                "offset": 4872,
+                "line": 211,
+                "column": 11
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 4864,
+              "line": 211,
+              "column": 3
+            },
+            "end": {
+              "offset": 4872,
+              "line": 211,
+              "column": 11
+            }
+          }
+        },
+        {
+          "kind": "enumValue",
+          "name": {
+            "kind": "name",
+            "value": "SELFEMPLOYED",
+            "location": {
+              "start": {
+                "offset": 4875,
+                "line": 212,
+                "column": 3
+              },
+              "end": {
+                "offset": 4887,
+                "line": 212,
+                "column": 15
+              }
+            }
+          },
+          "attributes": [],
+          "comment": null,
+          "location": {
+            "start": {
+              "offset": 4875,
+              "line": 212,
+              "column": 3
+            },
+            "end": {
+              "offset": 4887,
+              "line": 212,
               "column": 15
             }
           }
@@ -9901,13 +10182,13 @@
       ],
       "location": {
         "start": {
-          "offset": 4741,
-          "line": 200,
+          "offset": 4818,
+          "line": 208,
           "column": 1
         },
         "end": {
-          "offset": 4812,
-          "line": 205,
+          "offset": 4889,
+          "line": 213,
           "column": 2
         }
       }
@@ -9919,13 +10200,13 @@
         "value": "marital",
         "location": {
           "start": {
-            "offset": 4819,
-            "line": 207,
+            "offset": 4896,
+            "line": 215,
             "column": 6
           },
           "end": {
-            "offset": 4826,
-            "line": 207,
+            "offset": 4903,
+            "line": 215,
             "column": 13
           }
         }
@@ -9938,13 +10219,13 @@
             "value": "SINGLE",
             "location": {
               "start": {
-                "offset": 4831,
-                "line": 208,
+                "offset": 4908,
+                "line": 216,
                 "column": 3
               },
               "end": {
-                "offset": 4837,
-                "line": 208,
+                "offset": 4914,
+                "line": 216,
                 "column": 9
               }
             }
@@ -9953,13 +10234,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4831,
-              "line": 208,
+              "offset": 4908,
+              "line": 216,
               "column": 3
             },
             "end": {
-              "offset": 4837,
-              "line": 208,
+              "offset": 4914,
+              "line": 216,
               "column": 9
             }
           }
@@ -9971,13 +10252,13 @@
             "value": "MARRIED",
             "location": {
               "start": {
-                "offset": 4840,
-                "line": 209,
+                "offset": 4917,
+                "line": 217,
                 "column": 3
               },
               "end": {
-                "offset": 4847,
-                "line": 209,
+                "offset": 4924,
+                "line": 217,
                 "column": 10
               }
             }
@@ -9986,13 +10267,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4840,
-              "line": 209,
+              "offset": 4917,
+              "line": 217,
               "column": 3
             },
             "end": {
-              "offset": 4847,
-              "line": 209,
+              "offset": 4924,
+              "line": 217,
               "column": 10
             }
           }
@@ -10004,13 +10285,13 @@
             "value": "WIDOWED",
             "location": {
               "start": {
-                "offset": 4850,
-                "line": 210,
+                "offset": 4927,
+                "line": 218,
                 "column": 3
               },
               "end": {
-                "offset": 4857,
-                "line": 210,
+                "offset": 4934,
+                "line": 218,
                 "column": 10
               }
             }
@@ -10019,13 +10300,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4850,
-              "line": 210,
+              "offset": 4927,
+              "line": 218,
               "column": 3
             },
             "end": {
-              "offset": 4857,
-              "line": 210,
+              "offset": 4934,
+              "line": 218,
               "column": 10
             }
           }
@@ -10037,13 +10318,13 @@
             "value": "SEPARATED",
             "location": {
               "start": {
-                "offset": 4860,
-                "line": 211,
+                "offset": 4937,
+                "line": 219,
                 "column": 3
               },
               "end": {
-                "offset": 4869,
-                "line": 211,
+                "offset": 4946,
+                "line": 219,
                 "column": 12
               }
             }
@@ -10052,13 +10333,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4860,
-              "line": 211,
+              "offset": 4937,
+              "line": 219,
               "column": 3
             },
             "end": {
-              "offset": 4869,
-              "line": 211,
+              "offset": 4946,
+              "line": 219,
               "column": 12
             }
           }
@@ -10070,13 +10351,13 @@
             "value": "DIVORCED",
             "location": {
               "start": {
-                "offset": 4872,
-                "line": 212,
+                "offset": 4949,
+                "line": 220,
                 "column": 3
               },
               "end": {
-                "offset": 4880,
-                "line": 212,
+                "offset": 4957,
+                "line": 220,
                 "column": 11
               }
             }
@@ -10085,13 +10366,13 @@
           "comment": null,
           "location": {
             "start": {
-              "offset": 4872,
-              "line": 212,
+              "offset": 4949,
+              "line": 220,
               "column": 3
             },
             "end": {
-              "offset": 4880,
-              "line": 212,
+              "offset": 4957,
+              "line": 220,
               "column": 11
             }
           }
@@ -10099,13 +10380,13 @@
       ],
       "location": {
         "start": {
-          "offset": 4814,
-          "line": 207,
+          "offset": 4891,
+          "line": 215,
           "column": 1
         },
         "end": {
-          "offset": 4882,
-          "line": 213,
+          "offset": 4959,
+          "line": 221,
           "column": 2
         }
       }
