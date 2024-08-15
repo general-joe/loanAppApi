@@ -9,21 +9,20 @@ const DocumentType = z.enum([
   "TAXRETURNS",
   "BANKSTATMENT",
   "CREDITREPORT",
-  "RECENTPAYSTUBS"
+  "RECENTPAYSTUBS",
 ]);
 
 export const DocumentSchema = z.object({
-
   type: DocumentType,
 
-  personId: z.string().uuid("Invalid UUID format").optional(),
-  person: z
-    .object({
-      id: z.string().uuid(),
-      fullName: z.string(),
-      email: z.string().email()
-    })
-    .optional()
+  // personId: z.string().uuid("Invalid UUID format").optional(),
+  // person: z
+  //   .object({
+  //     id: z.string().uuid(),
+  //     fullName: z.string(),
+  //     email: z.string().email()
+  //   })
+  //   .optional()
 });
 
 export type DocumentRequestDto = z.infer<typeof DocumentSchema>;
