@@ -27,7 +27,10 @@ export const LoanSchema = z.object({
     .string({ required_error: "Collateral is required" })
     .trim()
     .min(1, "Collateral is required"),
-  personId: z.string({ required_error: "Person ID is required" }).uuid("Invalid UUID format").optional()
+  personId: z
+    .string({ required_error: "Person ID is required" })
+    // .uuid("Invalid UUID format")
+    .optional(),
 });
 
 export type LoanRequestDto = z.infer<typeof LoanSchema>;

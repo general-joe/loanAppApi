@@ -119,10 +119,20 @@
     "modelName": "creditHistory",
     "fields": [
       "id",
-      "detailsOfPreviousLoans",
-      "repaymentHistory",
+      "previousLoan",
+      "repaymentSchedule",
       "latePayments",
       "personId"
+    ]
+  },
+  {
+    "modelName": "schedule",
+    "fields": [
+      "FULL",
+      "MONTHLY",
+      "WEEKLY",
+      "DAILY",
+      "YEARLY"
     ]
   },
   {

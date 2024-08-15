@@ -27,7 +27,8 @@ model user {
 }
 
 model person {
-  id                  String          @id @default(uuid())
+  id String @id @unique
+
   fullname            String
   dob                 DateTime
   maritalStatus       marital
@@ -113,12 +114,20 @@ model currentDebt {
 }
 
 model creditHistory {
-  id                     String  @id @default(uuid())
-  detailsOfPreviousLoans String
-  repaymentHistory       String
-  latePayments           String
-  person                 person? @relation(fields: [personId], references: [id])
-  personId               String?
+  id                String    @id @default(uuid())
+  previousLoan      Boolean   @default(false)
+  repaymentSchedule schedule?
+  latePayments      Boolean   @default(false)
+  person            person?   @relation(fields: [personId], references: [id])
+  personId          String?
+}
+
+enum schedule {
+  FULL
+  MONTHLY
+  WEEKLY
+  DAILY
+  YEARLY
 }
 
 model publicRecords {

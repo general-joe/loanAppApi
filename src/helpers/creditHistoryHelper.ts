@@ -29,10 +29,15 @@ export const createCreditHistory = async (
       }
 
       // All checks passed, proceed to create the credit history
+      // return await prisma.creditHistory.create({
+      //   data: restData,
+      // });
       return await prisma.creditHistory.create({
         data: {
-          ...restData,
-          person: personId ? { connect: { id: personId } } : undefined,
+          latePayments: restData.latePayments,
+          personId,
+          previousLoan: restData.previousLoan,
+          repaymentSchedule: restData.repaymentSchedule,
         },
       });
     } else {

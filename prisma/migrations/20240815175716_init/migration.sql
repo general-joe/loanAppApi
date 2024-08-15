@@ -1,4 +1,7 @@
 -- CreateEnum
+CREATE TYPE "schedule" AS ENUM ('FULL', 'MONTHLY', 'WEEKLY', 'DAILY', 'YEARLY');
+
+-- CreateEnum
 CREATE TYPE "documentType" AS ENUM ('PASSPORT', 'NATIONALID', 'DRIVERLICENSE', 'UTITLITYBILL', 'LEASEAGREEMENT', 'TAXRETURNS', 'BANKSTATMENT', 'CREDITREPORT', 'RECENTPAYSTUBS');
 
 -- CreateEnum
@@ -18,6 +21,22 @@ CREATE TYPE "employmentType" AS ENUM ('FULLTIME', 'PARTTIME', 'CONTRACT', 'SELFE
 
 -- CreateEnum
 CREATE TYPE "marital" AS ENUM ('SINGLE', 'MARRIED', 'WIDOWED', 'SEPARATED', 'DIVORCED');
+
+-- CreateTable
+CREATE TABLE "user" (
+    "id" TEXT NOT NULL,
+    "fullName" TEXT NOT NULL,
+    "email" TEXT NOT NULL,
+    "password" TEXT NOT NULL,
+    "otp" TEXT,
+    "isVerified" BOOLEAN NOT NULL DEFAULT false,
+    "company" TEXT,
+    "del_flag" BOOLEAN NOT NULL DEFAULT false,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "user_pkey" PRIMARY KEY ("id")
+);
 
 -- CreateTable
 CREATE TABLE "person" (
@@ -113,9 +132,9 @@ CREATE TABLE "currentDebt" (
 -- CreateTable
 CREATE TABLE "creditHistory" (
     "id" TEXT NOT NULL,
-    "detailsOfPreviousLoans" TEXT NOT NULL,
-    "repaymentHistory" TEXT NOT NULL,
-    "latePayments" TEXT NOT NULL,
+    "previousLoan" BOOLEAN NOT NULL DEFAULT false,
+    "repaymentSchedule" "schedule",
+    "latePayments" BOOLEAN NOT NULL DEFAULT false,
     "personId" TEXT,
 
     CONSTRAINT "creditHistory_pkey" PRIMARY KEY ("id")
@@ -155,6 +174,15 @@ CREATE TABLE "documents" (
 
     CONSTRAINT "documents_pkey" PRIMARY KEY ("id")
 );
+
+-- CreateIndex
+CREATE UNIQUE INDEX "user_email_key" ON "user"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "user_otp_key" ON "user"("otp");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "person_id_key" ON "person"("id");
 
 -- AddForeignKey
 ALTER TABLE "employment" ADD CONSTRAINT "employment_personId_fkey" FOREIGN KEY ("personId") REFERENCES "person"("id") ON DELETE SET NULL ON UPDATE CASCADE;
