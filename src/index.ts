@@ -6,7 +6,7 @@ import cors from "cors";
 dotenv.config();
 
 const app: Express = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 8999;
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(
